@@ -44,7 +44,6 @@ public class ClanConfigManager {
     public void load() {
         this.plugin.reloadConfig();
         this.config = this.plugin.getConfig();
-        this.loadMessages();
         this.loadGeneral();
         this.loadWar();
         this.loadPermissions();
@@ -55,15 +54,14 @@ public class ClanConfigManager {
         this.plugin.reloadConfig();
         this.config = this.plugin.getConfig();
         reloaded.add("config.yml");
-        this.loadMessages();
-        reloaded.add("messages.yml");
         this.loadGeneral();
         this.loadWar();
         this.loadPermissions();
+        reloaded.add("config settings");
         return reloaded;
     }
 
-    private void loadMessages() {
+    public void loadMessages() {
         this.messagesFile = new File(this.plugin.getDataFolder(), "messages.yml");
         if (!this.messagesFile.exists()) {
             this.plugin.saveResource("messages.yml", false);
