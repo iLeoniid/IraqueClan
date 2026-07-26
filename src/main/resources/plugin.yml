@@ -1,0 +1,78 @@
+name: IraqueClan
+version: '${version}'
+main: gg.leo.IraqueClan.IraqueClan
+api-version: '26.2'
+description: Sistema de Clãs para Iraque Survival
+author: Leo
+depend: [IraqueCore]
+softdepend: [Vault]
+
+commands:
+  clan:
+    description: Comando principal do clã
+    usage: /clan <subcomando>
+    aliases: [clans]
+    permission: iraqueclan.use
+  clana:
+    description: Comando de administração do clã
+    usage: /clana <subcomando>
+    aliases: [clanadmin]
+    permission: iraqueclan.admin
+
+permissions:
+  iraqueclan.*:
+    description: Todas as permissões do IraqueClan
+    default: op
+    children:
+      iraqueclan.use: true
+      iraqueclan.create: true
+      iraqueclan.invite: true
+      iraqueclan.kick: true
+      iraqueclan.disband: true
+      iraqueclan.promote: true
+      iraqueclan.demote: true
+      iraqueclan.war.declare: true
+      iraqueclan.war.accept: true
+      iraqueclan.info: true
+      iraqueclan.list: true
+      iraqueclan.settings: true
+      iraqueclan.admin: true
+  iraqueclan.use:
+    description: Usar comandos básicos do clã
+    default: true
+  iraqueclan.create:
+    description: Criar um clã
+    default: true
+  iraqueclan.invite:
+    description: Convidar jogadores para o clã
+    default: true
+  iraqueclan.kick:
+    description: Expulsar jogadores do clã
+    default: true
+  iraqueclan.disband:
+    description: Dissolver o clã
+    default: true
+  iraqueclan.promote:
+    description: Promover membros do clã
+    default: true
+  iraqueclan.demote:
+    description: Rebaixar membros do clã
+    default: true
+  iraqueclan.war.declare:
+    description: Declarar guerra a outro clã
+    default: true
+  iraqueclan.war.accept:
+    description: Aceitar guerra pendente
+    default: true
+  iraqueclan.info:
+    description: Ver informações de clãs
+    default: true
+  iraqueclan.list:
+    description: Listar todos os clãs
+    default: true
+  iraqueclan.settings:
+    description: Configurar tag e cor do clã
+    default: true
+  iraqueclan.admin:
+    description: Comandos de administração do clã
+    default: op

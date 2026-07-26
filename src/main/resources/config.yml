@@ -1,0 +1,409 @@
+# ============================================================
+#  Configuração do IraqueClan
+#  Plugin de Clãs para Minecraft Paper 1.21.4+
+#  Autor: Iraque Survival
+# ============================================================
+
+# --------------------------------------------------
+#  GERAL
+#  Configurações gerais do plugin
+# --------------------------------------------------
+geral:
+  # Prefixo exibido em todas as mensagens do plugin
+  prefixo: "&8[&6Clans&8] &r"
+  # Idioma do plugin (código ISO)
+  idioma: "pt_BR"
+  # Intervalo de auto-save em ticks (20 ticks = 1 segundo)
+  # 6000 ticks = 5 minutos
+  auto-save-interval: 6000
+  # Modo de depuração (exibe informações extras no console)
+  debug: false
+
+# --------------------------------------------------
+#  CRIAÇÃO DE CLÃS
+#  Regras para criação de novos clãs
+# --------------------------------------------------
+criacao:
+  # Comprimento máximo do nome do clã
+  max-nome-tamanho: 20
+  # Comprimento máximo da tag do clã
+  max-tag-tamanho: 5
+  # Comprimento mínimo da tag do clã
+  min-tag-tamanho: 2
+  # Custo para criar um clã (requer Vault)
+  custo-criacao: 500.0
+  # Limite padrão de membros por clã
+  max-membros: 20
+  # Tags bloqueadas (não podem ser usadas como tag de clã)
+  tags-bloqueadas:
+    - admin
+    - mod
+    - staff
+    - operator
+
+# --------------------------------------------------
+#  ECONOMIA
+#  Integração com Vault para sistema econômico
+# --------------------------------------------------
+economia:
+  # Ativar/desativar sistema econômico
+  habilitado: true
+  # Mensagem ao depositar dinheiro no banco do clã
+  mensagem-deposito: "&aDepósito de &e$%quantidade% &arealizado com sucesso!"
+  # Mensagem ao sacar dinheiro do banco do clã
+  mensagem-saque: "&cSaque de &e$%quantidade% &crealizado com sucesso!"
+  # Saldo inicial ao criar um clã
+  saldo-inicial: 0
+
+# --------------------------------------------------
+#  CASAS (HOMES)
+#  Sistema de casas do clã
+# --------------------------------------------------
+casas:
+  # Número máximo de casas por clã (padrão)
+  max-casas-padrao: 1
+  # Raio de proteção ao redor da casa do clã
+  raio-casa: 10
+  # Cooldown entre teletransportes em segundos
+  cooldown-segundos: 5
+  # Atraso do teletransporte em segundos (dá tempo de se preparar)
+  atraso-teletransporte: 3
+
+# --------------------------------------------------
+#  CORREIO
+#  Sistema de mensagens entre clãs
+# --------------------------------------------------
+correio:
+  # Comprimento máximo de uma mensagem de correio
+  max-tamanho-mensagem: 100
+  # Quantidade máxima de correios armazenados por clã
+  max-correios-armazenados: 50
+
+# --------------------------------------------------
+#  MOTD (Mensagem do Dia)
+#  Mensagem exibida ao entrar no clã
+# --------------------------------------------------
+motd:
+  # Comprimento máximo da mensagem MOTD
+  max-tamanho-motd: 200
+
+# --------------------------------------------------
+#  CHAT
+#  Configurações do chat do clã
+# --------------------------------------------------
+chat:
+  # Ativar/desativar o chat do clã
+  habilitado: true
+  # Formato da mensagem no chat do clã
+  # Placeholders disponíveis:
+  #   %clan_tag%    - Tag do clã
+  #   %player_name% - Nome do jogador
+  #   %message%     - Mensagem enviada
+  formato: "&7[&e%clan_tag%&7] &r%player_name%&7: &r%message%"
+
+# --------------------------------------------------
+#  NÍVEIS E XP
+#  Sistema de progressão do clã
+# --------------------------------------------------
+niveis:
+  # Ativar/desativar sistema de níveis
+  habilitado: true
+  # XP ganho ao matar um monstro
+  xp-matar-monstro: 5
+  # XP ganho ao matar um jogador
+  xp-matar-jogador: 25
+  # XP ganho ao minerar um bloco
+  xp-minerar: 1
+  # Nível máximo que um clã pode alcançar
+  nivel-maximo: 100
+  # Transmitir mensagem quando um clã subir de nível
+  anuncio-subida-nivel: true
+  # Recompensas por alcançar níveis específicos
+  recompensas:
+    - nivel: 5
+      recompensa-banco: 1000.0
+      recompensa-xp: 0
+      comandos:
+        - "say %clan% alcancou o nivel %level%!"
+      mensagem: "&a&lParabéns! Seu clã subiu para o nível %level%!"
+    - nivel: 10
+      recompensa-banco: 5000.0
+      recompensa-xp: 0
+      comandos: []
+      mensagem: "&a&lSeu clã atingiu o nível %level%! Recompensas desbloqueadas!"
+
+# --------------------------------------------------
+#  LOJA E UPGRADES
+#  Sistema de melhorias para o clã
+# --------------------------------------------------
+loja:
+  # Ativar/desativar a loja de upgrades
+  habilitado: true
+  # Upgrades disponíveis na loja
+  upgrades:
+    # Aumenta a área protegida da base do clã
+    raio-base:
+      nome: "&eRaio da Base"
+      descricao: "&7Aumenta a área protegida da base"
+      nivel-maximo: 5
+      preco-base: 5000.0
+      multiplicador-preco: 1.5
+      raio-por-nivel: 5
+    # Aumenta o XP ganho pelo clã
+    boost-xp:
+      nome: "&eBoost de XP"
+      descricao: "&7Aumenta o XP ganho pelo clã"
+      nivel-maximo: 3
+      preco-base: 10000.0
+      multiplicador-preco: 2.0
+      percentual-por-nivel: 25
+    # Aumenta o limite de membros do clã
+    limite-membros:
+      nome: "&eLimite de Membros"
+      descricao: "&7Aumenta o limite de membros"
+      nivel-maximo: 5
+      preco-base: 8000.0
+      multiplicador-preco: 1.5
+      membros-por-nivel: 5
+    # Desbloqueia casas extras para o clã
+    casas-extras:
+      nome: "&eCasas Extras"
+      descricao: "&7Desbloqueia casas extras"
+      nivel-maximo: 5
+      preco-base: 3000.0
+      multiplicador-preco: 1.8
+      casas-por-nivel: 1
+    # Aumenta a capacidade do vault do clã
+    vault:
+      nome: "&eCapacidade do Vault"
+      descricao: "&7Aumenta slots do vault"
+      nivel-maximo: 5
+      preco-base: 4000.0
+      multiplicador-preco: 1.5
+      slots-por-nivel: 9
+
+# --------------------------------------------------
+#  DIPLOMACIA
+#  Sistema de alianças e rivalidades entre clãs
+# --------------------------------------------------
+diplomacia:
+  # Ativar/desativar sistema de diplomacia
+  habilitado: true
+  # Número máximo de alianças por clã
+  max-aliados: 3
+  # Número máximo de rivalidades por clã
+  max-rivais: 3
+  # Tempo de expiração de pedidos de diplomacia em minutos
+  tempo-expiracao-minutos: 60
+  # Permitir dano entre membros de clãs aliados
+  fogo-amigado-aliados: false
+
+# --------------------------------------------------
+#  GUERRA
+#  Sistema de guerras entre clãs
+# --------------------------------------------------
+guerra:
+  # Ativar/desativar sistema de guerras
+  habilitado: true
+  # Duração máxima de uma guerra em minutos
+  duracao-maxima-minutos: 60
+  # Tempo limite para aceitar uma guerra em segundos
+  tempo-aceitar-segundos: 120
+  # Aposta mínima para uma guerra
+  aposta-minima: 1000.0
+  # Aposta máxima para uma guerra
+  aposta-maxima: 100000.0
+  # Número de kills necessárias para vencer uma guerra
+  kills-para-vencer: 50
+  # Cooldown entre kills na guerra em segundos
+  cooldown-kill-segundos: 30
+  # Limite de guerras no histórico do clã
+  limite-historico: 50
+
+# --------------------------------------------------
+#  CONQUISTAS
+#  Sistema de conquistas do clã
+# --------------------------------------------------
+conquistas:
+  # Ativar/desativar sistema de conquistas
+  habilitado: true
+  # Lista de conquistas disponíveis
+  lista:
+    # Primeira kill do clã
+    primeiro-sangue:
+      nome: "&6Primeiro Sangue"
+      descricao: "&7Seu clã conseguiu a primeira kill"
+      tipo-requisito: KILLS
+      valor-requisito: 1
+      recompensa-dinheiro: 500.0
+      recompensa-xp: 50
+    # Vencer 10 guerras
+    senhor-da-guerra:
+      nome: "&cSenhor da Guerra"
+      descricao: "&7Ganhe 10 guerras"
+      tipo-requisito: WINS
+      valor-requisito: 10
+      recompensa-dinheiro: 50000.0
+      recompensa-xp: 500
+    # Ter $100,000 no banco
+    rico:
+      nome: "&eRico"
+      descricao: "&7Tenha $100,000 no banco"
+      tipo-requisito: BANK
+      valor-requisito: 100000
+      recompensa-dinheiro: 10000.0
+      recompensa-xp: 200
+    # Ter 20 membros
+    unidos:
+      nome: "&bUnidos"
+      descricao: "&7Tenha 20 membros"
+      tipo-requisito: MEMBERS
+      valor-requisito: 20
+      recompensa-dinheiro: 5000.0
+      recompensa-xp: 100
+    # Alcançar nível 50
+    lendario:
+      nome: "&5Lendário"
+      descricao: "&7Alcance nível 50"
+      tipo-requisito: LEVEL
+      valor-requisito: 50
+      recompensa-dinheiro: 100000.0
+      recompensa-xp: 1000
+
+# --------------------------------------------------
+#  MISSÕES
+#  Sistema de missões para os clãs
+# --------------------------------------------------
+missoes:
+  # Ativar/desativar sistema de missões
+  habilitado: true
+  # Tempo de atualização das missões em horas
+  tempo-atualizacao-horas: 24
+  # Número máximo de missões ativas por clã
+  max-missoes-ativas: 3
+  # Tipos de missões disponíveis
+  tipos:
+    # Missão de matar monstros
+    MATAR_MONSTROS:
+      nome: "&cCaçar Monstros"
+      quantidade-minima: 10
+      quantidade-maxima: 100
+      multiplicador-recompensa-xp: 5
+    # Missão de minerar blocos
+    MINERAR_BLOCOS:
+      nome: "&6Minerar Blocos"
+      quantidade-minima: 50
+      quantidade-maxima: 500
+      multiplicador-recompensa-xp: 3
+    # Missão de ganhar dinheiro
+    GANHAR_DINHEIRO:
+      nome: "&eGanhar Dinheiro"
+      quantidade-minima: 1000
+      quantidade-maxima: 50000
+      multiplicador-recompensa-dinheiro: 0.1
+    # Missão de ganhar XP
+    GANHAR_XP:
+      nome: "&bGanhar XP"
+      quantidade-minima: 100
+      quantidade-maxima: 1000
+      multiplicador-recompensa-xp: 2
+
+# --------------------------------------------------
+#  PROTEÇÃO
+#  Sistema de proteção de território do clã
+# --------------------------------------------------
+protecao:
+  # Ativar/desativar proteção de território
+  habilitado: true
+  # Raio padrão de proteção ao redor do claim
+  raio-padrao: 15
+  # Ações bloqueadas dentro do território protegido
+  acoes-bloqueadas:
+    - BLOCK_BREAK
+    - BLOCK_PLACE
+    - BLOCK_INTERACT
+    - ENTITY_DAMAGE
+
+# --------------------------------------------------
+#  LOGS
+#  Sistema de registro de ações do clã
+# --------------------------------------------------
+logs:
+  # Ativar/desativar sistema de logs
+  habilitado: true
+  # Número máximo de logs armazenados
+  max-logs: 100
+  # Tipos de ações que serão registradas
+  tipos-registrados:
+    - DEPOSIT
+    - WITHDRAWAL
+    - KICK
+    - PROMOTE
+    - DEMOTE
+    - WAR
+    - DIPLOMACY
+    - SHOP
+    - CREATE
+    - DISBAND
+    - JOIN
+    - LEAVE
+
+# --------------------------------------------------
+#  PERFIS
+#  Sistema de perfil do clã
+# --------------------------------------------------
+perfis:
+  # Ativar/desativar sistema de perfis
+  habilitado: true
+  # Descrição padrão ao criar um clã
+  descricao-padrao: "Um clã do Iraque Survival!"
+  # Comprimento máximo da descrição
+  max-desc-tamanho: 200
+
+# --------------------------------------------------
+#  ADMIN
+#  Configurações de administração do plugin
+# --------------------------------------------------
+admin:
+  # Prefixo das mensagens de administração
+  prefixo: "&8[&4Admin&8] &r"
+  # Exigir confirmação antes de desmanchar um clã
+  exigir-confirmacao-desmanchar: true
+
+# --------------------------------------------------
+#  PLACEHOLDERAPI
+#  Integração com PlaceholderAPI para placeholders
+# --------------------------------------------------
+placeholderapi:
+  # Ativar/desativar registro de placeholders
+  habilitado: true
+
+# --------------------------------------------------
+#  DISCORD
+#  Integração com Discord via webhooks
+# --------------------------------------------------
+discord:
+  # Ativar/desativar integração com Discord
+  habilitado: false
+  # URL do webhook do Discord
+  url-webhook: ""
+  # Eventos que enviaram mensagem no Discord
+  eventos:
+    # Quando um clã é criado
+    clan-criar: true
+    # Quando um clã é desmanchado
+    clan-desmanchar: true
+    # Quando uma guerra começa
+    guerra-inicio: true
+    # Quando uma guerra termina
+    guerra-fim: true
+
+# --------------------------------------------------
+#  WORLDGUARD
+#  Integração com WorldGuard
+# --------------------------------------------------
+worldguard:
+  # Ativar/desativar integração com WorldGuard
+  habilitado: true
+  # Bloquear ações em regiões protegidas do WorldGuard
+  bloquear-regioes-protegidas: true
