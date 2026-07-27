@@ -125,7 +125,10 @@ public class ClanConfigManager {
             }
             return hex.toString();
         });
-        s = s.replaceAll("&#([0-9a-fA-F]{6})", "\u00a7x\u00a7$1\u00a7$2\u00a7$3\u00a7$4\u00a7$5\u00a7$6");
+        s = Pattern.compile("&#([0-9a-fA-F]{6})").matcher(s).replaceAll(mr -> {
+            String hex = mr.group(1).toLowerCase();
+            return "\u00a7x\u00a7" + String.join("\u00a7", hex.split(""));
+        });
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); ++i) {
             char c = s.charAt(i);
