@@ -63,6 +63,7 @@ public class QuestManager {
             ConfigurationSection typeSection = typesSection.getConfigurationSection(questType);
             if (typeSection == null) continue;
 
+            String tracker = typeSection.getString("tracker", questType);
             String name = typeSection.getString("nome", questType);
             int minQty = typeSection.getInt("quantidade-minima", 10);
             int maxQty = typeSection.getInt("quantidade-maxima", 100);
@@ -74,7 +75,7 @@ public class QuestManager {
             double rewardMoney = required * moneyMultiplier;
 
             String questId = questType.toLowerCase() + "-" + System.currentTimeMillis() + "-" + i;
-            Clan.ClanQuest quest = new Clan.ClanQuest(questId, questType, required, 0, rewardXP, rewardMoney);
+            Clan.ClanQuest quest = new Clan.ClanQuest(questId, tracker, required, 0, rewardXP, rewardMoney);
             clan.addQuest(quest);
         }
 
