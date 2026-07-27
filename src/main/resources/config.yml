@@ -276,7 +276,7 @@ conquistas:
 # --------------------------------------------------
 protecao:
   # Ativar/desativar proteção de território
-  habilitado: true
+  habilitado: false
   # Raio padrão de proteção ao redor do claim
   raio-padrao: 15
   # Ações bloqueadas dentro do território protegido

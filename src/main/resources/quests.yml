@@ -5,7 +5,7 @@
 #  evento do servidor incrementa o progresso.
 # --------------------------------------------------
 missoes:
-  habilitado: true
+  habilitado: false
   tempo-atualizacao-horas: 24
   max-missoes-ativas: 3
 
