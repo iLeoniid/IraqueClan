@@ -6,18 +6,43 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 public class QuestManager {
 
     private final IraqueClan plugin;
+    private FileConfiguration questsConfig;
 
     public QuestManager(IraqueClan plugin) {
         this.plugin = plugin;
+        loadConfig();
+    }
+
+    private void loadConfig() {
+        this.questsConfig = new YamlConfiguration();
+        java.io.File file = new java.io.File(this.plugin.getDataFolder(), "quests.yml");
+        if (!file.exists()) {
+            this.plugin.saveResource("quests.yml", false);
+        }
+        try {
+            this.questsConfig.load(file);
+        } catch (Exception e) {
+            this.plugin.getLogger().severe("Erro ao carregar quests.yml: " + e.getMessage());
+        }
+    }
+
+    public void reloadConfig() {
+        loadConfig();
+    }
+
+    public FileConfiguration getConfig() {
+        return this.questsConfig;
     }
 
     public void generateQuests(Clan clan) {
         if (clan == null) return;
-        ConfigurationSection section = this.plugin.getConfig().getConfigurationSection("missoes");
+        ConfigurationSection section = this.questsConfig.getConfigurationSection("missoes");
         if (section == null || !section.getBoolean("habilitado", true)) return;
 
         int maxQuests = section.getInt("max-missoes-ativas", 3);
