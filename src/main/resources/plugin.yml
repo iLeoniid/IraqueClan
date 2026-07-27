@@ -5,7 +5,7 @@ api-version: '26.2'
 description: Sistema de Clãs para Iraque Survival
 author: Leo
 depend: [IraqueCore]
-softdepend: [Vault]
+softdepend: [Vault, PlaceholderAPI]
 
 commands:
   clan:
