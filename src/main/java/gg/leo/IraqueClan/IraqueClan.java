@@ -11,12 +11,14 @@ import gg.leo.IraqueClan.listener.ClanJoinQuitListener;
 import gg.leo.IraqueClan.listener.ClanProtectionListener;
 import gg.leo.IraqueClan.listener.ClanScoreboardListener;
 import gg.leo.IraqueClan.listener.XpGainListener;
+import gg.leo.IraqueClan.placeholder.ClanPlaceholderExpansion;
 import gg.leo.IraqueClan.utils.ClanUtils;
 import gg.leo.IraqueClan.utils.StartupReport;
 import gg.leo.IraqueClan.utils.StartupReport.Step;
 import gg.leo.IraqueClan.utils.menu.MenuListener;
 import gg.leo.IraqueClan.war.WarListener;
 import gg.leo.IraqueClan.war.WarManager;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class IraqueClan extends JavaPlugin {
@@ -154,6 +156,19 @@ public class IraqueClan extends JavaPlugin {
             }
         } catch (Exception e) {
             report.finishStepWarning(step, "Não foi possível verificar IraqueCore");
+        }
+
+        // 12. PlaceholderAPI
+        step = report.startStep("Registrando placeholders (PlaceholderAPI)");
+        try {
+            if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+                new ClanPlaceholderExpansion(this).register();
+                report.finishStep(step, "Placeholders registrados");
+            } else {
+                report.finishStepSkipped(step, "PlaceholderAPI não encontrado");
+            }
+        } catch (Exception e) {
+            report.finishStepWarning(step, "Erro ao registrar placeholders: " + e.getMessage());
         }
 
         // Summary
