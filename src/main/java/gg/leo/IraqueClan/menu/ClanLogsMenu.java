@@ -3,6 +3,7 @@ package gg.leo.IraqueClan.menu;
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
 import gg.leo.IraqueClan.utils.ClanUtils;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
 import gg.leo.IraqueClan.utils.menu.MenuType;
@@ -152,7 +153,7 @@ public class ClanLogsMenu extends BaseMenu {
                 ),
                 p -> {
                     this.plugin.getClanManager().clearLogs(p.getUniqueId());
-                    p.sendMessage("&#55FF55Logs limpos!");
+                    p.sendMessage(ItemBuilder.color("&#55FF55Logs limpos!"));
                     this.updateMenu();
                 }
         ));

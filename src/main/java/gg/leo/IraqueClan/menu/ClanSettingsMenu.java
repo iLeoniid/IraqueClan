@@ -3,6 +3,7 @@ package gg.leo.IraqueClan.menu;
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
 import gg.leo.IraqueClan.clan.role.ClanRole;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
 import gg.leo.IraqueClan.utils.menu.MenuType;
@@ -51,7 +52,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan tag <nova tag> &#AAAAAApara alterar a tag.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan tag <nova tag> &#AAAAAApara alterar a tag."));
                 }
         ));
 
@@ -67,7 +68,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan cor <cor> &#AAAAAApara alterar a cor.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan cor <cor> &#AAAAAApara alterar a cor."));
                 }
         ));
 
@@ -83,7 +84,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan descricao <texto> &#AAAAAApara definir.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan descricao <texto> &#AAAAAApara definir."));
                 }
         ));
 
@@ -99,7 +100,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan icone <material> &#AAAAAApara alterar.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan icone <material> &#AAAAAApara alterar."));
                 }
         ));
 
@@ -117,7 +118,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan motd <mensagem> &#AAAAAApara definir.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan motd <mensagem> &#AAAAAApara definir."));
                 }
         ));
 
@@ -135,7 +136,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan cargo <tipo> <nome> &#AAAAAApara alterar.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan cargo <tipo> <nome> &#AAAAAApara alterar."));
                 }
         ));
 
@@ -153,7 +154,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan casa <set|tp|list> &#AAAAAApara gerenciar.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan casa <set|tp|list> &#AAAAAApara gerenciar."));
                 }
         ));
 
@@ -181,7 +182,7 @@ public class ClanSettingsMenu extends BaseMenu {
                 ),
                 p -> {
                     this.plugin.getClanManager().clearLogs(p.getUniqueId());
-                    p.sendMessage("&#55FF55Logs do cl\u00e3o limpos!");
+                    p.sendMessage(ItemBuilder.color("&#55FF55Logs do cl\u00e3o limpos!"));
                     p.closeInventory();
                 }
         ));

@@ -2,6 +2,7 @@ package gg.leo.IraqueClan.menu;
 
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
 import gg.leo.IraqueClan.utils.menu.MenuType;
@@ -124,7 +125,7 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia aliado <cl\u00e3o> &#AAAAAApara declarar alian\u00e7a.");
+                    if (isLeader) p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan diplomacia aliado <cl\u00e3o> &#AAAAAApara declarar alian\u00e7a."));
                 }
         ));
 
@@ -140,7 +141,7 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia rival <cl\u00e3o> &#AAAAAApara declarar rivalidade.");
+                    if (isLeader) p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan diplomacia rival <cl\u00e3o> &#AAAAAApara declarar rivalidade."));
                 }
         ));
 
@@ -156,7 +157,7 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia remover <cl\u00e3o> &#AAAAAApara remover.");
+                    if (isLeader) p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan diplomacia remover <cl\u00e3o> &#AAAAAApara remover."));
                 }
         ));
 

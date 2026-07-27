@@ -4,6 +4,7 @@ import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
 import gg.leo.IraqueClan.menu.leaderboard.LeaderboardMainMenu;
 import gg.leo.IraqueClan.utils.ClanUtils;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
 import gg.leo.IraqueClan.utils.menu.MenuType;
@@ -108,7 +109,7 @@ public class ClanMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan aceitar &#AAAAAApara aceitar um convite.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan aceitar &#AAAAAApara aceitar um convite."));
                 }
         ));
 

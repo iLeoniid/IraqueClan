@@ -2,6 +2,7 @@ package gg.leo.IraqueClan.menu;
 
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
 import gg.leo.IraqueClan.utils.menu.MenuType;
@@ -62,7 +63,7 @@ public class ClanBankMenu extends BaseMenu {
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan banco depositar <valor> &#AAAAAApara depositar.");
+                    p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan banco depositar <valor> &#AAAAAApara depositar."));
                 }
         ));
 
@@ -86,7 +87,7 @@ public class ClanBankMenu extends BaseMenu {
                 isLeader
                         ? p -> {
                             p.closeInventory();
-                            p.sendMessage("&#AAAAAAUse &#FFFF55/clan banco sacar <valor> &#AAAAAApara sacar.");
+                            p.sendMessage(ItemBuilder.color("&#AAAAAAUse &#FFFF55/clan banco sacar <valor> &#AAAAAApara sacar."));
                         }
                         : p -> {}
         ));
