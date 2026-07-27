@@ -24,10 +24,8 @@ public class StartupReport {
     public void printBanner(String version) {
         this.logger.info("");
         this.logger.info(LINE);
-        this.logger.info("\u00a7b\u00a7l  ╔═══════════════════════╗");
-        this.logger.info("\u00a7b\u00a7l  ║   \u00a7f\u00a7lIraqueClan\u00a7b\u00a7l v" + version + "  \u00a7b\u00a7l ║");
-        this.logger.info("\u00a7b\u00a7l  ║  \u00a77Sistema de Clãs  \u00a7b\u00a7l ║");
-        this.logger.info("\u00a7b\u00a7l  ╚═══════════════════════╝");
+        this.logger.info("\u00a7b\u00a7l  IraqueClan v" + version);
+        this.logger.info("\u00a7b\u00a7l  Sistema de Cl\u00e3s");
         this.logger.info(LINE);
         this.logger.info("");
     }

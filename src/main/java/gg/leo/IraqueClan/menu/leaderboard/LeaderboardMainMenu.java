@@ -13,21 +13,21 @@ public class LeaderboardMainMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public LeaderboardMainMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lLeaderboard", 27, MenuType.SIMPLE);
+        super(player, "&#555555&lLeaderboard", 27, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         this.registerButton(10, new MenuButton(
                 Material.IRON_SWORD,
                 "&#ef476f&lKills",
                 List.of(
                         "",
-                        " &7Ranking de kills totais",
-                        " &7de todos os cl\u00e3s",
+                        " &#AAAAAARanking de kills totais",
+                        " &#AAAAAAde todos os cl\u00e3s",
                         ""
                 ),
                 p -> new KillsLeaderboard(this.plugin, p).openMenu()
@@ -38,8 +38,8 @@ public class LeaderboardMainMenu extends BaseMenu {
                 "&#4ecdc4&lMembros",
                 List.of(
                         "",
-                        " &7Ranking por n\u00famero",
-                        " &7de membros por cl\u00e3o",
+                        " &#AAAAAARanking por n\u00famero",
+                        " &#AAAAAAde membros por cl\u00e3o",
                         ""
                 ),
                 p -> new MembersLeaderboard(this.plugin, p).openMenu()
@@ -50,8 +50,8 @@ public class LeaderboardMainMenu extends BaseMenu {
                 "&#ffd166&lTempo",
                 List.of(
                         "",
-                        " &7Ranking por tempo",
-                        " &7de exist\u00eancia dos cl\u00e3s",
+                        " &#AAAAAARanking por tempo",
+                        " &#AAAAAAde exist\u00eancia dos cl\u00e3s",
                         ""
                 ),
                 p -> new TimeLeaderboard(this.plugin, p).openMenu()
@@ -62,8 +62,8 @@ public class LeaderboardMainMenu extends BaseMenu {
                 "&#06d6a0&lN\u00edvel",
                 List.of(
                         "",
-                        " &7Ranking por n\u00edvel",
-                        " &7do cl\u00e3o",
+                        " &#AAAAAARanking por n\u00edvel",
+                        " &#AAAAAAdo cl\u00e3o",
                         ""
                 ),
                 p -> new LevelLeaderboard(this.plugin, p).openMenu()
@@ -74,8 +74,8 @@ public class LeaderboardMainMenu extends BaseMenu {
                 "&#ffd166&lBanco",
                 List.of(
                         "",
-                        " &7Ranking por saldo",
-                        " &7do banco do cl\u00e3o",
+                        " &#AAAAAARanking por saldo",
+                        " &#AAAAAAdo banco do cl\u00e3o",
                         ""
                 ),
                 p -> new BankLeaderboard(this.plugin, p).openMenu()
@@ -86,8 +86,8 @@ public class LeaderboardMainMenu extends BaseMenu {
                 "&#a8dadc&lKDR",
                 List.of(
                         "",
-                        " &7Ranking por KDR",
-                        " &7(kills / mortes)",
+                        " &#AAAAAARanking por KDR",
+                        " &#AAAAAA(kills / mortes)",
                         ""
                 ),
                 p -> new KdrLeaderboard(this.plugin, p).openMenu()

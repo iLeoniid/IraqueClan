@@ -39,7 +39,7 @@ public class ClanQuestCommand implements ClanSubCommand {
         }
         player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("quest.list-header"));
         for (Clan.ClanQuest quest : quests.values()) {
-            String status = quest.isComplete() ? "&a✓" : "&c✗";
+            String status = quest.isComplete() ? "&#55FF55✓" : "&#FF5555✗";
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("quest.list-entry")
                     .replace("{name}", quest.id())
                     .replace("{current}", String.valueOf(quest.current()))

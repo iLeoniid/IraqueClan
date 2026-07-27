@@ -61,7 +61,7 @@ public abstract class BaseMenu {
     }
 
     protected void addBackButton(int slot, Consumer<Player> action) {
-        this.registerButton(slot, new MenuButton(Material.ARROW, "&c&lVoltar", List.of("&7Retorna ao menu anterior"), action));
+        this.registerButton(slot, new MenuButton(Material.ARROW, "&#FF5555&lVoltar", List.of("&#AAAAAARetorna ao menu anterior"), action));
     }
 
     public void updateMenu() {

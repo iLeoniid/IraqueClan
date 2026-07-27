@@ -16,20 +16,20 @@ public class ClanLogsMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanLogsMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&l\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 Logs do Cl\u00e3o \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557", 54, MenuType.SIMPLE);
+        super(player, " Logs do Cl ", 54, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8\u2591");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(49, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -38,10 +38,10 @@ public class ClanLogsMenu extends BaseMenu {
 
         this.registerButton(4, new MenuButton(
                 Material.BOOK,
-                "&7&l\u2554\u2550\u2550 Hist\u00f3rico \u2550\u2550\u2557",
+                "&#AAAAAA&lHist\u00f3rico",
                 List.of(
                         "",
-                        " &7Total de logs: &f" + clan.getLogs().size(),
+                        " &#AAAAAATotal de logs: &#FFFFFF" + clan.getLogs().size(),
                         ""
                 ),
                 p -> {}
@@ -52,10 +52,10 @@ public class ClanLogsMenu extends BaseMenu {
         if (logs.isEmpty()) {
             this.registerButton(22, new MenuButton(
                     Material.PAPER,
-                    "&7\u2554\u2550\u2550 Nenhum Log \u2550\u2550\u2557",
+                    "&#AAAAAANenhum Log",
                     List.of(
                             "",
-                            " &7Nenhuma atividade registrada.",
+                            " &#AAAAAANenhuma atividade registrada.",
                             ""
                     ),
                     p -> {}
@@ -78,49 +78,49 @@ public class ClanLogsMenu extends BaseMenu {
                 switch (log.action().toLowerCase()) {
                     case "kill":
                         mat = Material.IRON_SWORD;
-                        actionColor = "&c";
+                        actionColor = "&#FF5555";
                         break;
                     case "join":
                     case "member-join":
                         mat = Material.LIME_DYE;
-                        actionColor = "&a";
+                        actionColor = "&#55FF55";
                         break;
                     case "leave":
                     case "member-leave":
                         mat = Material.RED_DYE;
-                        actionColor = "&c";
+                        actionColor = "&#FF5555";
                         break;
                     case "promote":
                         mat = Material.LIME_DYE;
-                        actionColor = "&b";
+                        actionColor = "&#55FFFF";
                         break;
                     case "demote":
                         mat = Material.RED_DYE;
-                        actionColor = "&e";
+                        actionColor = "&#FFFF55";
                         break;
                     case "bank-deposit":
                         mat = Material.EMERALD;
-                        actionColor = "&a";
+                        actionColor = "&#55FF55";
                         break;
                     case "bank-withdraw":
                         mat = Material.REDSTONE;
-                        actionColor = "&c";
+                        actionColor = "&#FF5555";
                         break;
                     case "upgrade":
                         mat = Material.DIAMOND;
-                        actionColor = "&b";
+                        actionColor = "&#55FFFF";
                         break;
                     case "war-win":
                         mat = Material.GOLD_INGOT;
-                        actionColor = "&6";
+                        actionColor = "&#FFAA00";
                         break;
                     case "war-loss":
                         mat = Material.BARRIER;
-                        actionColor = "&c";
+                        actionColor = "&#FF5555";
                         break;
                     default:
                         mat = Material.PAPER;
-                        actionColor = "&7";
+                        actionColor = "&#AAAAAA";
                         break;
                 }
 
@@ -129,9 +129,9 @@ public class ClanLogsMenu extends BaseMenu {
                         actionColor + log.action(),
                         List.of(
                                 "",
-                                " &7Jogador: &f" + player,
-                                " &7Detalhes: &f" + log.details(),
-                                " &7Hora: &7" + time,
+                                " &#AAAAAAJogador: &#FFFFFF" + player,
+                                " &#AAAAAADetalhes: &#FFFFFF" + log.details(),
+                                " &#AAAAAAHora: &#AAAAAA" + time,
                                 ""
                         ),
                         p -> {}
@@ -143,16 +143,16 @@ public class ClanLogsMenu extends BaseMenu {
 
         this.registerButton(49, new MenuButton(
                 Material.LAVA_BUCKET,
-                "&c&lLimpar Logs",
+                "&#FF5555&lLimpar Logs",
                 List.of(
                         "",
-                        " &7Limpa todo o hist\u00f3rico",
-                        " &c\u26a0 Irrevers\u00edvel!",
+                        " &#AAAAAALimpa todo o hist\u00f3rico",
+                        " &#FF5555\u26a0 Irrevers\u00edvel!",
                         ""
                 ),
                 p -> {
                     this.plugin.getClanManager().clearLogs(p.getUniqueId());
-                    p.sendMessage("&aLogs limpos!");
+                    p.sendMessage("&#55FF55Logs limpos!");
                     this.updateMenu();
                 }
         ));

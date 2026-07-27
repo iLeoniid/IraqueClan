@@ -15,20 +15,20 @@ public class ClanQuestsMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanQuestsMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&l\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 Quests do Cl\u00e3o \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557", 45, MenuType.SIMPLE);
+        super(player, " Quests do Cl ", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8\u2591");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(40, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -37,11 +37,11 @@ public class ClanQuestsMenu extends BaseMenu {
 
         this.registerButton(4, new MenuButton(
                 Material.NAME_TAG,
-                "&e&l\u2554\u2550\u2550 Quests Ativas \u2550\u2550\u2557",
+                "&#FFFF55&lQuests Ativas",
                 List.of(
                         "",
-                        " &7Quests ativas: &f" + clan.getActiveQuests().size(),
-                        " &7Complete para ganhar recompensas",
+                        " &#AAAAAAQuests ativas: &#FFFFFF" + clan.getActiveQuests().size(),
+                        " &#AAAAAAComplete para ganhar recompensas",
                         ""
                 ),
                 p -> {}
@@ -52,12 +52,12 @@ public class ClanQuestsMenu extends BaseMenu {
         if (quests.isEmpty()) {
             this.registerButton(22, new MenuButton(
                     Material.PAPER,
-                    "&7\u2554\u2550\u2550 Nenhuma Quest \u2550\u2550\u2557",
+                    "&#AAAAAANenhuma Quest",
                     List.of(
                             "",
-                            " &7Nenhuma quest ativa no momento.",
-                            " &7Complete atividades para receber",
-                            " &7quests automaticamente.",
+                            " &#AAAAAANenhuma quest ativa no momento.",
+                            " &#AAAAAAComplete atividades para receber",
+                            " &#AAAAAAquests automaticamente.",
                             ""
                     ),
                     p -> {}
@@ -75,30 +75,30 @@ public class ClanQuestsMenu extends BaseMenu {
 
                 List<String> lore = new ArrayList<>();
                 lore.add("");
-                lore.add(" &7Tipo: &f" + quest.type());
-                lore.add(" &7Progresso: " + progressBar);
-                lore.add(" &f" + quest.current() + "/" + quest.required());
+                lore.add(" &#AAAAAATipo: &#FFFFFF" + quest.type());
+                lore.add(" &#AAAAAAProgresso: " + progressBar);
+                lore.add(" &#FFFFFF" + quest.current() + "/" + quest.required());
                 lore.add("");
-                lore.add(" &7Recompensa:");
-                lore.add("   &eXP: &b" + quest.rewardXP());
-                lore.add("   &7Dinheiro: &a$" + String.format("%.2f", quest.rewardMoney()));
+                lore.add(" &#AAAAAARecompensa:");
+                lore.add("   &#FFFF55XP: &#55FFFF" + quest.rewardXP());
+                lore.add("   &#AAAAAADinheiro: &#55FF55$" + String.format("%.2f", quest.rewardMoney()));
                 lore.add("");
 
                 if (complete) {
-                    lore.add(" &a\u2714 Completa! Clique para resgatar!");
+                    lore.add(" &#55FF55\u2714 Completa! Clique para resgatar!");
                 } else {
-                    lore.add(" &7" + String.format("%.0f", (quest.current() * 100.0 / quest.required())) + "% conclu\u00eddo");
+                    lore.add(" &#AAAAAA" + String.format("%.0f", (quest.current() * 100.0 / quest.required())) + "% conclu\u00eddo");
                 }
                 lore.add("");
 
                 this.registerButton(slot, new MenuButton(
                         complete ? Material.LIME_STAINED_GLASS_PANE : Material.ORANGE_STAINED_GLASS_PANE,
-                        (complete ? "&a&l" : "&e&l") + quest.id(),
+                        (complete ? "&#55FF55&l" : "&#FFFF55&l") + quest.id(),
                         lore,
                         complete
                                 ? p -> {
                                     this.plugin.getClanManager().completeQuest(p.getUniqueId(), quest.id());
-                                    p.sendMessage("&aQuest completada! Recompensas recebidas!");
+                                    p.sendMessage("&#55FF55Quest completada! Recompensas recebidas!");
                                     this.updateMenu();
                                 }
                                 : p -> {}
@@ -114,11 +114,11 @@ public class ClanQuestsMenu extends BaseMenu {
     private String getProgressBar(int current, int max) {
         int bars = 20;
         int filled = max > 0 ? (int) Math.round((double) current / max * bars) : 0;
-        StringBuilder bar = new StringBuilder("&7[");
+        StringBuilder bar = new StringBuilder("&#AAAAAA[");
         for (int i = 0; i < bars; i++) {
-            bar.append(i < filled ? "&a\u2588" : "&8\u2591");
+            bar.append(i < filled ? "&#55FF55\u2588" : "&#555555\u2591");
         }
-        bar.append("&7]");
+        bar.append("&#AAAAAA]");
         return bar.toString();
     }
 }

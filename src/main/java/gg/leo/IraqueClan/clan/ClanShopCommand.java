@@ -44,7 +44,7 @@ public class ClanShopCommand implements ClanSubCommand {
         int size = ((upgradeKeys.size() / 9) + 1) * 9;
         size = Math.max(27, Math.min(size, 54));
         Inventory gui = org.bukkit.Bukkit.createInventory(null, size,
-                gg.leo.IraqueClan.utils.ItemBuilder.color("&8Loja do Clã"));
+                gg.leo.IraqueClan.utils.ItemBuilder.color("&#555555Loja do Clã"));
         int slot = 0;
         for (String key : upgradeKeys) {
             ConfigurationSection upSection = upgradesSection.getConfigurationSection(key);
@@ -66,8 +66,8 @@ public class ClanShopCommand implements ClanSubCommand {
                 meta.setDisplayName(gg.leo.IraqueClan.utils.ItemBuilder.color(name));
                 meta.setLore(java.util.Arrays.asList(
                         gg.leo.IraqueClan.utils.ItemBuilder.color(desc),
-                        gg.leo.IraqueClan.utils.ItemBuilder.color("&7Nível atual: &f" + currentLevel + "/" + maxLevel),
-                        gg.leo.IraqueClan.utils.ItemBuilder.color("&7Próximo preço: &f$" + String.format("%.2f", nextPrice))
+                        gg.leo.IraqueClan.utils.ItemBuilder.color("&#AAAAAANível atual: &#FFFFFF" + currentLevel + "/" + maxLevel),
+                        gg.leo.IraqueClan.utils.ItemBuilder.color("&#AAAAAAPróximo preço: &#FFFFFF$" + String.format("%.2f", nextPrice))
                 ));
                 item.setItemMeta(meta);
             }

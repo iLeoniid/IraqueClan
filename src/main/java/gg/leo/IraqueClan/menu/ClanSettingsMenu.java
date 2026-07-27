@@ -14,23 +14,23 @@ public class ClanSettingsMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanSettingsMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lConfigura\u00e7\u00f5es do Cl\u00e3o", 45, MenuType.SIMPLE);
+        super(player, "&#555555&lConfigura\u00e7\u00f5es do Cl\u00e3o", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null || !clan.getLeader().equals(this.player.getUniqueId())) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lAcesso negado",
+                    "&#FF5555&lAcesso negado",
                     List.of(
                             "",
-                            " &7Apenas o l\u00edder pode alterar",
-                            " &7as configura\u00e7\u00f5es do cl\u00e3o",
+                            " &#AAAAAAApenas o l\u00edder pode alterar",
+                            " &#AAAAAAas configura\u00e7\u00f5es do cl\u00e3o",
                             ""
                     ),
                     p -> {}
@@ -44,14 +44,14 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lMudar Tag",
                 List.of(
                         "",
-                        " &7Tag atual: " + clan.getFormattedTag(),
+                        " &#AAAAAATag atual: " + clan.getFormattedTag(),
                         "",
-                        " &7Use: &e/clan tag <nova tag>",
+                        " &#AAAAAAUse: &#FFFF55/clan tag <nova tag>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan tag <nova tag> &7para alterar a tag.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan tag <nova tag> &#AAAAAApara alterar a tag.");
                 }
         ));
 
@@ -60,14 +60,14 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lMudar Cor",
                 List.of(
                         "",
-                        " &7Cor atual: &f" + (clan.getTagColor().isEmpty() ? "(padr\u00e3o)" : clan.getTagColor()),
+                        " &#AAAAAACor atual: &#FFFFFF" + (clan.getTagColor().isEmpty() ? "(padr\u00e3o)" : clan.getTagColor()),
                         "",
-                        " &7Use: &e/clan cor <cor hex ou c\u00f3digo>",
+                        " &#AAAAAAUse: &#FFFF55/clan cor <cor hex ou c\u00f3digo>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan cor <cor> &7para alterar a cor.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan cor <cor> &#AAAAAApara alterar a cor.");
                 }
         ));
 
@@ -76,14 +76,14 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lDescri\u00e7\u00e3o",
                 List.of(
                         "",
-                        " &7Atual: &f" + (clan.getDescription().isEmpty() ? "(vazio)" : clan.getDescription()),
+                        " &#AAAAAAAtual: &#FFFFFF" + (clan.getDescription().isEmpty() ? "(vazio)" : clan.getDescription()),
                         "",
-                        " &7Use: &e/clan descricao <texto>",
+                        " &#AAAAAAUse: &#FFFF55/clan descricao <texto>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan descricao <texto> &7para definir.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan descricao <texto> &#AAAAAApara definir.");
                 }
         ));
 
@@ -92,14 +92,14 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lIcone do Cl\u00e3o",
                 List.of(
                         "",
-                        " &7Icone atual: &f" + clan.getIcon(),
+                        " &#AAAAAAIcone atual: &#FFFFFF" + clan.getIcon(),
                         "",
-                        " &7Use: &e/clan icone <material>",
+                        " &#AAAAAAUse: &#FFFF55/clan icone <material>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan icone <material> &7para alterar.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan icone <material> &#AAAAAApara alterar.");
                 }
         ));
 
@@ -108,16 +108,16 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lMOTD",
                 List.of(
                         "",
-                        " &7Mensagem do dia:",
-                        " &f" + (clan.getMotd().isEmpty() ? "(nenhuma)" : clan.getMotd()),
+                        " &#AAAAAAMensagem do dia:",
+                        " &#FFFFFF" + (clan.getMotd().isEmpty() ? "(nenhuma)" : clan.getMotd()),
                         "",
-                        " &7Use: &e/clan motd <mensagem>",
-                        " &7Use: &e/clan motd limpar",
+                        " &#AAAAAAUse: &#FFFF55/clan motd <mensagem>",
+                        " &#AAAAAAUse: &#FFFF55/clan motd limpar",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan motd <mensagem> &7para definir.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan motd <mensagem> &#AAAAAApara definir.");
                 }
         ));
 
@@ -126,16 +126,16 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lNomes de Cargo",
                 List.of(
                         "",
-                        " &7L\u00edder: &#ffd166" + clan.getRoleName(ClanRole.LIDER),
-                        " &7Sub-L\u00edder: &#4ecdc4" + clan.getRoleName(ClanRole.SUB_LIDER),
-                        " &7Membro: &7" + clan.getRoleName(ClanRole.MEMBRO),
+                        " &#AAAAAAL\u00edder: &#ffd166" + clan.getRoleName(ClanRole.LIDER),
+                        " &#AAAAAASub-L\u00edder: &#4ecdc4" + clan.getRoleName(ClanRole.SUB_LIDER),
+                        " &#AAAAAAMembro: &#AAAAAA" + clan.getRoleName(ClanRole.MEMBRO),
                         "",
-                        " &7Use: &e/clan cargo <l\u00edder|sub|membro> <nome>",
+                        " &#AAAAAAUse: &#FFFF55/clan cargo <l\u00edder|sub|membro> <nome>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan cargo <tipo> <nome> &7para alterar.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan cargo <tipo> <nome> &#AAAAAApara alterar.");
                 }
         ));
 
@@ -144,16 +144,16 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ffd166&lHomes do Cl\u00e3o",
                 List.of(
                         "",
-                        " &7Casas: &f" + clan.getHomeCount() + "/" + clan.getMaxHomes(),
+                        " &#AAAAAACasas: &#FFFFFF" + clan.getHomeCount() + "/" + clan.getMaxHomes(),
                         "",
-                        " &7Use: &e/clan casa set <nome>",
-                        " &7Use: &e/clan casa tp <nome>",
-                        " &7Use: &e/clan casa remover <nome>",
+                        " &#AAAAAAUse: &#FFFF55/clan casa set <nome>",
+                        " &#AAAAAAUse: &#FFFF55/clan casa tp <nome>",
+                        " &#AAAAAAUse: &#FFFF55/clan casa remover <nome>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan casa <set|tp|list> &7para gerenciar.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan casa <set|tp|list> &#AAAAAApara gerenciar.");
                 }
         ));
 
@@ -162,8 +162,8 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#06d6a0&lLoja de Upgrades",
                 List.of(
                         "",
-                        " &7Veja e compre upgrades",
-                        " &7para o seu cl\u00e3o",
+                        " &#AAAAAAVeja e compre upgrades",
+                        " &#AAAAAApara o seu cl\u00e3o",
                         ""
                 ),
                 p -> new ClanShopMenu(this.plugin, p).openMenu()
@@ -174,14 +174,14 @@ public class ClanSettingsMenu extends BaseMenu {
                 "&#ef476f&lLimpar Logs",
                 List.of(
                         "",
-                        " &7Limpa todo o hist\u00f3rico",
-                        " &7de atividades do cl\u00e3o",
+                        " &#AAAAAALimpa todo o hist\u00f3rico",
+                        " &#AAAAAAde atividades do cl\u00e3o",
                         " &#ef476fEsta a\u00e7\u00e3o \u00e9 irrevers\u00edvel!",
                         ""
                 ),
                 p -> {
                     this.plugin.getClanManager().clearLogs(p.getUniqueId());
-                    p.sendMessage("&aLogs do cl\u00e3o limpos!");
+                    p.sendMessage("&#55FF55Logs do cl\u00e3o limpos!");
                     p.closeInventory();
                 }
         ));

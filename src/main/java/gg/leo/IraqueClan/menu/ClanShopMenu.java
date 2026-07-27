@@ -24,20 +24,20 @@ public class ClanShopMenu extends BaseMenu {
     };
 
     public ClanShopMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lLoja de Upgrades", 45, MenuType.SIMPLE);
+        super(player, "&#555555&lLoja de Upgrades", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(40, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -51,8 +51,8 @@ public class ClanShopMenu extends BaseMenu {
                 "&#06d6a0&lLoja de Upgrades",
                 List.of(
                         "",
-                        " &7Saldo: &#06d6a0$" + String.format("%.2f", clan.getBank()),
-                        " &7L\u00edder pode comprar upgrades",
+                        " &#AAAAAASaldo: &#06d6a0$" + String.format("%.2f", clan.getBank()),
+                        " &#AAAAAAL\u00edder pode comprar upgrades",
                         ""
                 ),
                 p -> {}
@@ -78,12 +78,12 @@ public class ClanShopMenu extends BaseMenu {
 
             List<String> lore = List.of(
                     "",
-                    " &7" + description,
+                    " &#AAAAAA" + description,
                     "",
-                    " &7N\u00edvel: " + getLevelBar(currentLevel, 5),
-                    " &f" + currentLevel + "/5",
+                    " &#AAAAAAN\u00edvel: " + getLevelBar(currentLevel, 5),
+                    " &#FFFFFF" + currentLevel + "/5",
                     "",
-                    maxed ? " &#06d6a0N\u00edvel m\u00e1ximo!" : " &7Pr\u00f3ximo: &#ffd166$" + String.format("%.2f", nextPrice),
+                    maxed ? " &#06d6a0N\u00edvel m\u00e1ximo!" : " &#AAAAAAPr\u00f3ximo: &#ffd166$" + String.format("%.2f", nextPrice),
                     "",
                     !isLeader ? " &#ef476fApenas o l\u00edder pode comprar" : (maxed ? "" : " &#06d6a0Clique para comprar!")
             );
@@ -96,10 +96,10 @@ public class ClanShopMenu extends BaseMenu {
                             ? p -> {
                                 boolean success = this.plugin.getClanManager().purchaseUpgrade(p.getUniqueId(), upgradeId);
                                 if (success) {
-                                    p.sendMessage("&aUpgrade &e" + upgradeName + " &acomprado com sucesso!");
+                                    p.sendMessage("&#55FF55Upgrade &#FFFF55" + upgradeName + " &#55FF55comprado com sucesso!");
                                     this.updateMenu();
                                 } else {
-                                    p.sendMessage("&cSaldo insuficiente ou erro ao comprar!");
+                                    p.sendMessage("&#FF5555Saldo insuficiente ou erro ao comprar!");
                                 }
                             }
                             : p -> {}
@@ -112,11 +112,11 @@ public class ClanShopMenu extends BaseMenu {
     }
 
     private String getLevelBar(int current, int max) {
-        StringBuilder bar = new StringBuilder("&7[");
+        StringBuilder bar = new StringBuilder("&#AAAAAA[");
         for (int i = 0; i < max; i++) {
-            bar.append(i < current ? "&#06d6a0\u2588" : "&8\u2591");
+            bar.append(i < current ? "&#06d6a0\u2588" : "&#555555\u2591");
         }
-        bar.append("&7]");
+        bar.append("&#AAAAAA]");
         return bar.toString();
     }
 }

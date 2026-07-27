@@ -17,20 +17,20 @@ public class ClanMailsMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanMailsMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lMail do Cl\u00e3o", 54, MenuType.SIMPLE);
+        super(player, "&#555555&lMail do Cl\u00e3o", 54, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(49, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -42,10 +42,10 @@ public class ClanMailsMenu extends BaseMenu {
                 "&#ff6b6b&lMails do Cl\u00e3o",
                 List.of(
                         "",
-                        " &7Mensagens: &f" + clan.getMailCount(),
+                        " &#AAAAAAMensagens: &#FFFFFF" + clan.getMailCount(),
                         "",
-                        " &7Envie: &e/clan mail enviar <mensagem>",
-                        " &7Limpar: &e/clan mail limpar",
+                        " &#AAAAAAEnvie: &#FFFF55/clan mail enviar <mensagem>",
+                        " &#AAAAAALimpar: &#FFFF55/clan mail limpar",
                         ""
                 ),
                 p -> {}
@@ -56,11 +56,11 @@ public class ClanMailsMenu extends BaseMenu {
         if (mails.isEmpty()) {
             this.registerButton(22, new MenuButton(
                     Material.PAPER,
-                    "&7&lNenhuma Mail",
+                    "&#AAAAAA&lNenhuma Mail",
                     List.of(
                             "",
-                            " &7Nenhuma mensagem no momento.",
-                            " &7Envie uma com &e/clan mail enviar <msg>",
+                            " &#AAAAAANenhuma mensagem no momento.",
+                            " &#AAAAAAEnvie uma com &#FFFF55/clan mail enviar <msg>",
                             ""
                     ),
                     p -> {}
@@ -75,15 +75,15 @@ public class ClanMailsMenu extends BaseMenu {
 
                 List<String> lore = new ArrayList<>();
                 lore.add("");
-                lore.add(" &7De: &f" + senderName);
-                lore.add(" &7Hora: &7" + timeStr);
+                lore.add(" &#AAAAAADe: &#FFFFFF" + senderName);
+                lore.add(" &#AAAAAAHora: &#AAAAAA" + timeStr);
                 lore.add("");
-                lore.add(" &f\"" + truncate(mail.message(), 40) + "\"");
+                lore.add(" &#FFFFFF\"" + truncate(mail.message(), 40) + "\"");
                 lore.add("");
 
                 this.registerButton(slot, new MenuButton(
                         Material.PAPER,
-                        "&#ffd166Mail de &f" + senderName,
+                        "&#ffd166Mail de &#FFFFFF" + senderName,
                         lore,
                         p -> {}
                 ));
@@ -99,13 +99,13 @@ public class ClanMailsMenu extends BaseMenu {
                 "&#ef476f&lLimpar Tudo",
                 List.of(
                         "",
-                        " &7Remove todas as mails",
+                        " &#AAAAAARemove todas as mails",
                         " &#ef476fEsta a\u00e7\u00e3o \u00e9 irrevers\u00edvel!",
                         ""
                 ),
                 p -> {
                     this.plugin.getClanManager().clearMails(p.getUniqueId());
-                    p.sendMessage("&aTodas as mails foram limpas!");
+                    p.sendMessage("&#55FF55Todas as mails foram limpas!");
                     this.updateMenu();
                 }
         ));

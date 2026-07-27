@@ -95,15 +95,15 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
                 this.plugin.getConfigManager().getPrefixedMessage("admin.inspecting")
                         .replace("{clan}", clan.getName())
         ));
-        sender.sendMessage(ItemBuilder.color("&eNome: &f" + clan.getName()));
-        sender.sendMessage(ItemBuilder.color("&eTag: &f" + clan.getTag()));
-        sender.sendMessage(ItemBuilder.color("&eLider: &f" + Bukkit.getOfflinePlayer(clan.getLeader()).getName()));
-        sender.sendMessage(ItemBuilder.color("&eLevel: &f" + clan.getLevel()));
-        sender.sendMessage(ItemBuilder.color("&eXP: &f" + clan.getXp()));
-        sender.sendMessage(ItemBuilder.color("&eMembros: &f" + clan.getMemberCount() + "/" + clan.getMaxMembers()));
-        sender.sendMessage(ItemBuilder.color("&eBanco: &f$" + String.format("%.2f", clan.getBank())));
-        sender.sendMessage(ItemBuilder.color("&eKills: &f" + clan.getTotalKills() + " &7| &eMortes: &f" + clan.getDeaths()));
-        sender.sendMessage(ItemBuilder.color("&eKDR: &f" + clan.getKDR()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Nome: &#FFFFFF" + clan.getName()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Tag: &#FFFFFF" + clan.getTag()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Lider: &#FFFFFF" + Bukkit.getOfflinePlayer(clan.getLeader()).getName()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Level: &#FFFFFF" + clan.getLevel()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55XP: &#FFFFFF" + clan.getXp()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Membros: &#FFFFFF" + clan.getMemberCount() + "/" + clan.getMaxMembers()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Banco: &#FFFFFF$" + String.format("%.2f", clan.getBank())));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Kills: &#FFFFFF" + clan.getTotalKills() + " &#AAAAAA| &#FFFF55Mortes: &#FFFFFF" + clan.getDeaths()));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55KDR: &#FFFFFF" + clan.getKDR()));
         return true;
     }
 
@@ -123,7 +123,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
                 this.plugin.getConfigManager().getPrefixedMessage("admin.vault-opened")
                         .replace("{clan}", clan.getName())
         ));
-        sender.sendMessage(ItemBuilder.color("&eSaldo: &f$" + String.format("%.2f", clan.getBank())));
+        sender.sendMessage(ItemBuilder.color("&#FFFF55Saldo: &#FFFFFF$" + String.format("%.2f", clan.getBank())));
         return true;
     }
 
@@ -138,7 +138,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         try {
             amount = Double.parseDouble(args[3]);
         } catch (NumberFormatException e) {
-            sender.sendMessage(ItemBuilder.color("&cValor invalido."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Valor invalido."));
             return true;
         }
         ClanManager cm = this.plugin.getClanManager();
@@ -169,7 +169,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
             }
             case "remove" -> {
                 if (!clan.removeBank(amount)) {
-                    sender.sendMessage(ItemBuilder.color("&cBanco do clã insuficiente."));
+                    sender.sendMessage(ItemBuilder.color("&#FF5555Banco do clã insuficiente."));
                     return true;
                 }
                 cm.saveAll();
@@ -194,7 +194,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         try {
             amount = Long.parseLong(args[2]);
         } catch (NumberFormatException e) {
-            sender.sendMessage(ItemBuilder.color("&cValor invalido."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Valor invalido."));
             return true;
         }
         ClanManager cm = this.plugin.getClanManager();
@@ -223,7 +223,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         try {
             level = Integer.parseInt(args[2]);
         } catch (NumberFormatException e) {
-            sender.sendMessage(ItemBuilder.color("&cValor invalido."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Valor invalido."));
             return true;
         }
         ClanManager cm = this.plugin.getClanManager();
@@ -261,7 +261,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         }
         Clan clan = clanOpt.get();
         if (!clan.isMember(target.getUniqueId())) {
-            sender.sendMessage(ItemBuilder.color("&cEste jogador nao e membro do clã."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Este jogador nao e membro do clã."));
             return true;
         }
         UUID oldLeader = clan.getLeader();
@@ -290,7 +290,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         }
         ClanManager cm = this.plugin.getClanManager();
         if (cm.isPlayerInClan(target.getUniqueId())) {
-            sender.sendMessage(ItemBuilder.color("&cEste jogador ja esta em um clã."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Este jogador ja esta em um clã."));
             return true;
         }
         boolean success = cm.forceJoin(target.getUniqueId(), clanName);
@@ -348,7 +348,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         ClanManager cm = this.plugin.getClanManager();
         boolean success = cm.renameClan(oldName, newName);
         if (!success) {
-            sender.sendMessage(ItemBuilder.color("&cNao foi possivel renomear. Verifique se o nome antigo existe e o novo nao esta em uso."));
+            sender.sendMessage(ItemBuilder.color("&#FF5555Nao foi possivel renomear. Verifique se o nome antigo existe e o novo nao esta em uso."));
             return true;
         }
         sender.sendMessage(ItemBuilder.color(

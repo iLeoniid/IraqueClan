@@ -18,20 +18,20 @@ public class ClanMembersMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanMembersMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lMembros do Cl\u00e3o", 54, MenuType.SIMPLE);
+        super(player, "&#555555&lMembros do Cl\u00e3o", 54, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(49, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -40,11 +40,11 @@ public class ClanMembersMenu extends BaseMenu {
 
         this.registerButton(4, new MenuButton(
                 Material.PAPER,
-                "&#ffd166&lMembros de &f" + clan.getName(),
+                "&#ffd166&lMembros de &#FFFFFF" + clan.getName(),
                 List.of(
                         "",
-                        " &7Total: &f" + clan.getMemberCount() + "/" + clan.getMaxMembers(),
-                        " &7L\u00edder: &#ffd166" + ClanUtils.getPlayerName(clan.getLeader()),
+                        " &#AAAAAATotal: &#FFFFFF" + clan.getMemberCount() + "/" + clan.getMaxMembers(),
+                        " &#AAAAAAL\u00edder: &#ffd166" + ClanUtils.getPlayerName(clan.getLeader()),
                         ""
                 ),
                 p -> {}
@@ -69,13 +69,13 @@ public class ClanMembersMenu extends BaseMenu {
                     roleColor = "&#4ecdc4&l";
                     break;
                 default:
-                    roleColor = "&7";
+                    roleColor = "&#AAAAAA";
                     break;
             }
 
             List<String> lore = new ArrayList<>();
             lore.add("");
-            lore.add(" &7Cargo: " + roleColor + roleName);
+            lore.add(" &#AAAAAACargo: " + roleColor + roleName);
             if (isSelf) {
                 lore.add(" &#06d6a0Este \u00e9 voc\u00ea!");
             }
@@ -86,7 +86,7 @@ public class ClanMembersMenu extends BaseMenu {
 
             this.registerButton(slot, new MenuButton(
                     Material.PLAYER_HEAD,
-                    roleColor + roleName + " &f" + playerName,
+                    roleColor + roleName + " &#FFFFFF" + playerName,
                     lore,
                     p -> {}
             ));

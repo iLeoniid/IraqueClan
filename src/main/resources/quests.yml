@@ -13,25 +13,25 @@ missoes:
   tipos:
     # Missão de matar monstros
     MATAR_MONSTROS:
-      nome: "&cCaçar Monstros"
+      nome: "&#FF5555Caçar Monstros"
       quantidade-minima: 10
       quantidade-maxima: 100
       multiplicador-recompensa-xp: 5
     # Missão de minerar blocos
     MINERAR_BLOCOS:
-      nome: "&6Minerar Blocos"
+      nome: "&#FFAA00Minerar Blocos"
       quantidade-minima: 50
       quantidade-maxima: 500
       multiplicador-recompensa-xp: 3
     # Missão de ganhar dinheiro
     GANHAR_DINHEIRO:
-      nome: "&eGanhar Dinheiro"
+      nome: "&#FFFF55Ganhar Dinheiro"
       quantidade-minima: 1000
       quantidade-maxima: 50000
       multiplicador-recompensa-dinheiro: 0.1
     # Missão de ganhar XP
     GANHAR_XP:
-      nome: "&bGanhar XP"
+      nome: "&#55FFFFGanhar XP"
       quantidade-minima: 100
       quantidade-maxima: 1000
       multiplicador-recompensa-xp: 2

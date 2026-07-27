@@ -102,7 +102,7 @@ public class ClanConfigManager {
     }
 
     public String getMessage(String path) {
-        return this.getMessage(path, "&cMensagem não encontrada: " + path);
+        return this.getMessage(path, "&#FF5555Mensagem não encontrada: " + path);
     }
 
     public String getMessage(String path, String fallback) {
@@ -111,7 +111,7 @@ public class ClanConfigManager {
     }
 
     public String getPrefixedMessage(String path) {
-        String prefix = this.getMessage("prefix", "&#e63946[&#f1faeeIraqueClan&#e63946] &f");
+        String prefix = this.getMessage("prefix", "&#e63946[&#f1faeeIraqueClan&#e63946] &#FFFFFF");
         return this.translate(prefix + this.getMessage(path));
     }
 

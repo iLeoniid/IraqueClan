@@ -13,20 +13,20 @@ public class ClanBankMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanBankMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lBanco do Cl\u00e3o", 27, MenuType.SIMPLE);
+        super(player, "&#555555&lBanco do Cl\u00e3o", 27, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(13, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(22, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -42,8 +42,8 @@ public class ClanBankMenu extends BaseMenu {
                         "",
                         " &#06d6a0&l$" + String.format("%.2f", clan.getBank()),
                         "",
-                        " &7Este \u00e9 o saldo total",
-                        " &7do banco do seu cl\u00e3o",
+                        " &#AAAAAAEste \u00e9 o saldo total",
+                        " &#AAAAAAdo banco do seu cl\u00e3o",
                         ""
                 ),
                 p -> {}
@@ -54,28 +54,28 @@ public class ClanBankMenu extends BaseMenu {
                 "&#06d6a0&lDepositar",
                 List.of(
                         "",
-                        " &7Deposite dinheiro no banco",
-                        " &7do seu cl\u00e3o",
+                        " &#AAAAAADeposite dinheiro no banco",
+                        " &#AAAAAAdo seu cl\u00e3o",
                         "",
-                        " &7Use: &e/clan banco depositar <valor>",
+                        " &#AAAAAAUse: &#FFFF55/clan banco depositar <valor>",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    p.sendMessage("&7Use &e/clan banco depositar <valor> &7para depositar.");
+                    p.sendMessage("&#AAAAAAUse &#FFFF55/clan banco depositar <valor> &#AAAAAApara depositar.");
                 }
         ));
 
         this.registerButton(15, new MenuButton(
                 Material.DROPPER,
-                isLeader ? "&#ef476f&lSacar" : "&8&lSacar",
+                isLeader ? "&#ef476f&lSacar" : "&#555555&lSacar",
                 isLeader
                         ? List.of(
                                 "",
-                                " &7Saque dinheiro do banco",
-                                " &7do seu cl\u00e3o",
+                                " &#AAAAAASaque dinheiro do banco",
+                                " &#AAAAAAdo seu cl\u00e3o",
                                 "",
-                                " &7Use: &e/clan banco sacar <valor>",
+                                " &#AAAAAAUse: &#FFFF55/clan banco sacar <valor>",
                                 ""
                         )
                         : List.of(
@@ -86,19 +86,19 @@ public class ClanBankMenu extends BaseMenu {
                 isLeader
                         ? p -> {
                             p.closeInventory();
-                            p.sendMessage("&7Use &e/clan banco sacar <valor> &7para sacar.");
+                            p.sendMessage("&#AAAAAAUse &#FFFF55/clan banco sacar <valor> &#AAAAAApara sacar.");
                         }
                         : p -> {}
         ));
 
         this.registerButton(21, new MenuButton(
                 Material.BARRIER,
-                "&7&lTransa\u00e7\u00f5es",
+                "&#AAAAAA&lTransa\u00e7\u00f5es",
                 List.of(
                         "",
-                        " &7Veja o hist\u00f3rico de",
-                        " &7transa\u00e7\u00f5es do banco",
-                        " &7(use &e/clan logs &7para ver)",
+                        " &#AAAAAAVeja o hist\u00f3rico de",
+                        " &#AAAAAAtransa\u00e7\u00f5es do banco",
+                        " &#AAAAAA(use &#FFFF55/clan logs &#AAAAAApara ver)",
                         ""
                 ),
                 p -> new ClanLogsMenu(this.plugin, p).openMenu()

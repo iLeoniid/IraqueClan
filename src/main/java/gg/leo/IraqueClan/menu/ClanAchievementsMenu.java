@@ -31,20 +31,20 @@ public class ClanAchievementsMenu extends BaseMenu {
     };
 
     public ClanAchievementsMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&l\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550 Conquistas \u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557", 45, MenuType.SIMPLE);
+        super(player, " Conquistas ", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8\u2591");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(40, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -53,10 +53,10 @@ public class ClanAchievementsMenu extends BaseMenu {
 
         this.registerButton(4, new MenuButton(
                 Material.GOLD_INGOT,
-                "&6&l\u2554\u2550\u2550 Conquistas \u2550\u2550\u2557",
+                "&#FFAA00&lConquistas",
                 List.of(
                         "",
-                        " &7Desbloqueadas: &a" + clan.getAchievements().size() + "/" + ACHIEVEMENTS.length,
+                        " &#AAAAAADesbloqueadas: &#55FF55" + clan.getAchievements().size() + "/" + ACHIEVEMENTS.length,
                         ""
                 ),
                 p -> {}
@@ -78,12 +78,12 @@ public class ClanAchievementsMenu extends BaseMenu {
 
             this.registerButton(slot, new MenuButton(
                     unlocked ? unlockedMat : lockedMat,
-                    unlocked ? "&a\u2714 &f" + name : "&c\u2716 &8" + name,
+                    unlocked ? "&#55FF55\u2714 &#FFFFFF" + name : "&#FF5555\u2716 &#555555" + name,
                     List.of(
                             "",
-                            " &7" + description,
+                            " &#AAAAAA" + description,
                             "",
-                            unlocked ? " &a\u2714 Desbloqueado!" : " &c\u2716 Bloqueado",
+                            unlocked ? " &#55FF55\u2714 Desbloqueado!" : " &#FF5555\u2716 Bloqueado",
                             ""
                     ),
                     p -> {}

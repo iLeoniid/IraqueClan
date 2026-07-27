@@ -13,20 +13,20 @@ public class ClanDiplomacyMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanDiplomacyMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lDiplomacia", 45, MenuType.SIMPLE);
+        super(player, "&#555555&lDiplomacia", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(40, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -40,8 +40,8 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 "&#06d6a0&lDiplomacia do Cl\u00e3o",
                 List.of(
                         "",
-                        " &7Aliados: &#06d6a0" + countByType(clan, Clan.DiplomacyType.ALLY),
-                        " &7Rivais: &#ef476f" + countByType(clan, Clan.DiplomacyType.RIVAL),
+                        " &#AAAAAAAliados: &#06d6a0" + countByType(clan, Clan.DiplomacyType.ALLY),
+                        " &#AAAAAARivais: &#ef476f" + countByType(clan, Clan.DiplomacyType.RIVAL),
                         ""
                 ),
                 p -> {}
@@ -52,13 +52,13 @@ public class ClanDiplomacyMenu extends BaseMenu {
         if (relations.isEmpty()) {
             this.registerButton(22, new MenuButton(
                     Material.PAPER,
-                    "&7&lSem rela\u00e7\u00f5es",
+                    "&#AAAAAA&lSem rela\u00e7\u00f5es",
                     List.of(
                             "",
-                            " &7Nenhuma rela\u00e7\u00e3o diplom\u00e1tica",
-                            " &7foi estabelecida ainda.",
+                            " &#AAAAAANenhuma rela\u00e7\u00e3o diplom\u00e1tica",
+                            " &#AAAAAAfoi estabelecida ainda.",
                             "",
-                            isLeader ? " &7Use comandos para gerenciar" : "",
+                            isLeader ? " &#AAAAAAUse comandos para gerenciar" : "",
                             ""
                     ),
                     p -> {}
@@ -100,9 +100,9 @@ public class ClanDiplomacyMenu extends BaseMenu {
                         colorCode + otherName + " " + otherTag,
                         List.of(
                                 "",
-                                " &7Status: " + typeStr,
-                                " &7Membros: &f" + (otherClan != null ? otherClan.getMemberCount() : "?"),
-                                " &7Kills: &#ef476f" + (otherClan != null ? otherClan.getTotalKills() : "?"),
+                                " &#AAAAAAStatus: " + typeStr,
+                                " &#AAAAAAMembros: &#FFFFFF" + (otherClan != null ? otherClan.getMemberCount() : "?"),
+                                " &#AAAAAAKills: &#ef476f" + (otherClan != null ? otherClan.getTotalKills() : "?"),
                                 ""
                         ),
                         p -> {}
@@ -117,14 +117,14 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 "&#06d6a0&lNovo Aliado",
                 List.of(
                         "",
-                        " &7Declare outro cl\u00e3o como aliado",
+                        " &#AAAAAADeclare outro cl\u00e3o como aliado",
                         "",
-                        isLeader ? " &7Use: &e/clan diplomacia aliado <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
+                        isLeader ? " &#AAAAAAUse: &#FFFF55/clan diplomacia aliado <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&7Use &e/clan diplomacia aliado <cl\u00e3o> &7para declarar alian\u00e7a.");
+                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia aliado <cl\u00e3o> &#AAAAAApara declarar alian\u00e7a.");
                 }
         ));
 
@@ -133,30 +133,30 @@ public class ClanDiplomacyMenu extends BaseMenu {
                 "&#ef476f&lNovo Rival",
                 List.of(
                         "",
-                        " &7Declare outro cl\u00e3o como rival",
+                        " &#AAAAAADeclare outro cl\u00e3o como rival",
                         "",
-                        isLeader ? " &7Use: &e/clan diplomacia rival <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
+                        isLeader ? " &#AAAAAAUse: &#FFFF55/clan diplomacia rival <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&7Use &e/clan diplomacia rival <cl\u00e3o> &7para declarar rivalidade.");
+                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia rival <cl\u00e3o> &#AAAAAApara declarar rivalidade.");
                 }
         ));
 
         this.registerButton(42, new MenuButton(
                 Material.BARRIER,
-                "&8&lRemover",
+                "&#555555&lRemover",
                 List.of(
                         "",
-                        " &7Remova uma rela\u00e7\u00e3o diplom\u00e1tica",
+                        " &#AAAAAARemova uma rela\u00e7\u00e3o diplom\u00e1tica",
                         "",
-                        isLeader ? " &7Use: &e/clan diplomacia remover <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
+                        isLeader ? " &#AAAAAAUse: &#FFFF55/clan diplomacia remover <cl\u00e3o>" : " &#ef476fApenas o l\u00edder",
                         ""
                 ),
                 p -> {
                     p.closeInventory();
-                    if (isLeader) p.sendMessage("&7Use &e/clan diplomacia remover <cl\u00e3o> &7para remover.");
+                    if (isLeader) p.sendMessage("&#AAAAAAUse &#FFFF55/clan diplomacia remover <cl\u00e3o> &#AAAAAApara remover.");
                 }
         ));
 

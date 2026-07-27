@@ -10,7 +10,7 @@
 # --------------------------------------------------
 geral:
   # Prefixo exibido em todas as mensagens do plugin
-  prefixo: "&8[&6Clans&8] &r"
+  prefixo: "&#555555[&#FFAA00Clans&#555555] &r"
   # Idioma do plugin (código ISO)
   idioma: "pt_BR"
   # Intervalo de auto-save em ticks (20 ticks = 1 segundo)
@@ -49,9 +49,9 @@ economia:
   # Ativar/desativar sistema econômico
   habilitado: true
   # Mensagem ao depositar dinheiro no banco do clã
-  mensagem-deposito: "&aDepósito de &e$%quantidade% &arealizado com sucesso!"
+  mensagem-deposito: "&#55FF55Depósito de &#FFFF55$%quantidade% &#55FF55realizado com sucesso!"
   # Mensagem ao sacar dinheiro do banco do clã
-  mensagem-saque: "&cSaque de &e$%quantidade% &crealizado com sucesso!"
+  mensagem-saque: "&#FF5555Saque de &#FFFF55$%quantidade% &#FF5555realizado com sucesso!"
   # Saldo inicial ao criar um clã
   saldo-inicial: 0
 
@@ -99,7 +99,7 @@ chat:
   #   %clan_tag%    - Tag do clã
   #   %player_name% - Nome do jogador
   #   %message%     - Mensagem enviada
-  formato: "&7[&e%clan_tag%&7] &r%player_name%&7: &r%message%"
+  formato: "&#AAAAAA[&#FFFF55%clan_tag%&#AAAAAA] &r%player_name%&#AAAAAA: &r%message%"
 
 # --------------------------------------------------
 #  NÍVEIS E XP
@@ -125,12 +125,12 @@ niveis:
       recompensa-xp: 0
       comandos:
         - "say %clan% alcancou o nivel %level%!"
-      mensagem: "&a&lParabéns! Seu clã subiu para o nível %level%!"
+      mensagem: "&#55FF55&lParabéns! Seu clã subiu para o nível %level%!"
     - nivel: 10
       recompensa-banco: 5000.0
       recompensa-xp: 0
       comandos: []
-      mensagem: "&a&lSeu clã atingiu o nível %level%! Recompensas desbloqueadas!"
+      mensagem: "&#55FF55&lSeu clã atingiu o nível %level%! Recompensas desbloqueadas!"
 
 # --------------------------------------------------
 #  LOJA E UPGRADES
@@ -143,40 +143,40 @@ loja:
   upgrades:
     # Aumenta a área protegida da base do clã
     raio-base:
-      nome: "&eRaio da Base"
-      descricao: "&7Aumenta a área protegida da base"
+      nome: "&#FFFF55Raio da Base"
+      descricao: "&#AAAAAAAumenta a área protegida da base"
       nivel-maximo: 5
       preco-base: 5000.0
       multiplicador-preco: 1.5
       raio-por-nivel: 5
     # Aumenta o XP ganho pelo clã
     boost-xp:
-      nome: "&eBoost de XP"
-      descricao: "&7Aumenta o XP ganho pelo clã"
+      nome: "&#FFFF55Boost de XP"
+      descricao: "&#AAAAAAAumenta o XP ganho pelo clã"
       nivel-maximo: 3
       preco-base: 10000.0
       multiplicador-preco: 2.0
       percentual-por-nivel: 25
     # Aumenta o limite de membros do clã
     limite-membros:
-      nome: "&eLimite de Membros"
-      descricao: "&7Aumenta o limite de membros"
+      nome: "&#FFFF55Limite de Membros"
+      descricao: "&#AAAAAAAumenta o limite de membros"
       nivel-maximo: 5
       preco-base: 8000.0
       multiplicador-preco: 1.5
       membros-por-nivel: 5
     # Desbloqueia casas extras para o clã
     casas-extras:
-      nome: "&eCasas Extras"
-      descricao: "&7Desbloqueia casas extras"
+      nome: "&#FFFF55Casas Extras"
+      descricao: "&#AAAAAADesbloqueia casas extras"
       nivel-maximo: 5
       preco-base: 3000.0
       multiplicador-preco: 1.8
       casas-por-nivel: 1
     # Aumenta a capacidade do vault do clã
     vault:
-      nome: "&eCapacidade do Vault"
-      descricao: "&7Aumenta slots do vault"
+      nome: "&#FFFF55Capacidade do Vault"
+      descricao: "&#AAAAAAAumenta slots do vault"
       nivel-maximo: 5
       preco-base: 4000.0
       multiplicador-preco: 1.5
@@ -231,40 +231,40 @@ conquistas:
   lista:
     # Primeira kill do clã
     primeiro-sangue:
-      nome: "&6Primeiro Sangue"
-      descricao: "&7Seu clã conseguiu a primeira kill"
+      nome: "&#FFAA00Primeiro Sangue"
+      descricao: "&#AAAAAASeu clã conseguiu a primeira kill"
       tipo-requisito: KILLS
       valor-requisito: 1
       recompensa-dinheiro: 500.0
       recompensa-xp: 50
     # Vencer 10 guerras
     senhor-da-guerra:
-      nome: "&cSenhor da Guerra"
-      descricao: "&7Ganhe 10 guerras"
+      nome: "&#FF5555Senhor da Guerra"
+      descricao: "&#AAAAAAGanhe 10 guerras"
       tipo-requisito: WINS
       valor-requisito: 10
       recompensa-dinheiro: 50000.0
       recompensa-xp: 500
     # Ter $100,000 no banco
     rico:
-      nome: "&eRico"
-      descricao: "&7Tenha $100,000 no banco"
+      nome: "&#FFFF55Rico"
+      descricao: "&#AAAAAATenha $100,000 no banco"
       tipo-requisito: BANK
       valor-requisito: 100000
       recompensa-dinheiro: 10000.0
       recompensa-xp: 200
     # Ter 20 membros
     unidos:
-      nome: "&bUnidos"
-      descricao: "&7Tenha 20 membros"
+      nome: "&#55FFFFUnidos"
+      descricao: "&#AAAAAATenha 20 membros"
       tipo-requisito: MEMBERS
       valor-requisito: 20
       recompensa-dinheiro: 5000.0
       recompensa-xp: 100
     # Alcançar nível 50
     lendario:
-      nome: "&5Lendário"
-      descricao: "&7Alcance nível 50"
+      nome: "&#AA00AALendário"
+      descricao: "&#AAAAAAAlcance nível 50"
       tipo-requisito: LEVEL
       valor-requisito: 50
       recompensa-dinheiro: 100000.0
@@ -328,7 +328,7 @@ perfis:
 # --------------------------------------------------
 admin:
   # Prefixo das mensagens de administração
-  prefixo: "&8[&4Admin&8] &r"
+  prefixo: "&#555555[&#AA0000Admin&#555555] &r"
   # Exigir confirmação antes de desmanchar um clã
   exigir-confirmacao-desmanchar: true
 

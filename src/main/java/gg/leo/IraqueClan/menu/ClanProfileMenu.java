@@ -14,20 +14,20 @@ public class ClanProfileMenu extends BaseMenu {
     private final IraqueClan plugin;
 
     public ClanProfileMenu(IraqueClan plugin, Player player) {
-        super(player, "&8&lPerfil do Cl\u00e3o", 45, MenuType.SIMPLE);
+        super(player, "&#555555&lPerfil do Cl\u00e3o", 45, MenuType.SIMPLE);
         this.plugin = plugin;
     }
 
     @Override
     public void buildMenu() {
-        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&8");
+        this.addBorder(Material.GRAY_STAINED_GLASS_PANE, "&#555555");
 
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(this.player.getUniqueId());
         if (clan == null) {
             this.registerButton(22, new MenuButton(
                     Material.BARRIER,
-                    "&c&lNenhum cl\u00e3o encontrado",
-                    List.of("", " &7Voc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
+                    "&#FF5555&lNenhum cl\u00e3o encontrado",
+                    List.of("", " &#AAAAAAVoc\u00ea n\u00e3o est\u00e1 em um cl\u00e3o", ""),
                     p -> {}
             ));
             this.addBackButton(40, p -> new ClanMenu(this.plugin, p).openMenu());
@@ -42,8 +42,8 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#ffd166&l" + clan.getName(),
                 List.of(
                         "",
-                        " &7Tag: " + clan.getFormattedTag(),
-                        " &7Descri\u00e7\u00e3o: &f" + (clan.getDescription().isEmpty() ? "(sem)" : clan.getDescription()),
+                        " &#AAAAAATag: " + clan.getFormattedTag(),
+                        " &#AAAAAADescri\u00e7\u00e3o: &#FFFFFF" + (clan.getDescription().isEmpty() ? "(sem)" : clan.getDescription()),
                         ""
                 ),
                 p -> {}
@@ -54,8 +54,8 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#a8dadc&lMembros",
                 List.of(
                         "",
-                        " &7Total: &f" + clan.getMemberCount() + "/" + clan.getMaxMembers(),
-                        " &7L\u00edder: &#ffd166" + ClanUtils.getPlayerName(clan.getLeader()),
+                        " &#AAAAAATotal: &#FFFFFF" + clan.getMemberCount() + "/" + clan.getMaxMembers(),
+                        " &#AAAAAAL\u00edder: &#ffd166" + ClanUtils.getPlayerName(clan.getLeader()),
                         ""
                 ),
                 p -> new ClanMembersMenu(this.plugin, p).openMenu()
@@ -66,13 +66,13 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#ef476f&lStats de Guerra",
                 List.of(
                         "",
-                        " &7Kills: &#ef476f" + clan.getTotalKills(),
-                        " &7Mortes: &4" + clan.getDeaths(),
-                        " &7KDR: &#ffd166" + String.format("%.2f", kdr),
+                        " &#AAAAAAKills: &#ef476f" + clan.getTotalKills(),
+                        " &#AAAAAAMortes: &#AA0000" + clan.getDeaths(),
+                        " &#AAAAAAKDR: &#ffd166" + String.format("%.2f", kdr),
                         "",
-                        " &7Vit\u00f3rias: &#06d6a0" + clan.getWarWins(),
-                        " &7Derrotas: &#ef476f" + clan.getWarLosses(),
-                        " &7Empates: &7" + clan.getWarDraws(),
+                        " &#AAAAAAVit\u00f3rias: &#06d6a0" + clan.getWarWins(),
+                        " &#AAAAAADerrotas: &#ef476f" + clan.getWarLosses(),
+                        " &#AAAAAAEmpates: &#AAAAAA" + clan.getWarDraws(),
                         ""
                 ),
                 p -> {}
@@ -83,11 +83,11 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#06d6a0&lN\u00edvel e Progresso",
                 List.of(
                         "",
-                        " &7N\u00edvel: &#ffd166&l" + clan.getLevel(),
-                        " &7XP Total: &#4ecdc4" + clan.getXp(),
-                        " &7Pr\u00f3ximo: &f" + this.plugin.getClanManager().calculateRequiredXP(clan.getLevel() + 1),
+                        " &#AAAAAAN\u00edvel: &#ffd166&l" + clan.getLevel(),
+                        " &#AAAAAAXP Total: &#4ecdc4" + clan.getXp(),
+                        " &#AAAAAAPr\u00f3ximo: &#FFFFFF" + this.plugin.getClanManager().calculateRequiredXP(clan.getLevel() + 1),
                         "",
-                        " &7N\u00edvel " + getLevelBar(clan.getLevel(), 100),
+                        " &#AAAAAAN\u00edvel " + getLevelBar(clan.getLevel(), 100),
                         ""
                 ),
                 p -> {}
@@ -98,7 +98,7 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#4ecdc4&lBanco",
                 List.of(
                         "",
-                        " &7Saldo: &#06d6a0$" + String.format("%.2f", clan.getBank()),
+                        " &#AAAAAASaldo: &#06d6a0$" + String.format("%.2f", clan.getBank()),
                         ""
                 ),
                 p -> new ClanBankMenu(this.plugin, p).openMenu()
@@ -109,8 +109,8 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#06d6a0&lDiplomacia",
                 List.of(
                         "",
-                        " &7Aliados: &#06d6a0" + countByType(clan, Clan.DiplomacyType.ALLY),
-                        " &7Rivais: &#ef476f" + countByType(clan, Clan.DiplomacyType.RIVAL),
+                        " &#AAAAAAAliados: &#06d6a0" + countByType(clan, Clan.DiplomacyType.ALLY),
+                        " &#AAAAAARivais: &#ef476f" + countByType(clan, Clan.DiplomacyType.RIVAL),
                         ""
                 ),
                 p -> new ClanDiplomacyMenu(this.plugin, p).openMenu()
@@ -121,7 +121,7 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#ffd166&lConquistas",
                 List.of(
                         "",
-                        " &7Desbloqueadas: &f" + clan.getAchievements().size(),
+                        " &#AAAAAADesbloqueadas: &#FFFFFF" + clan.getAchievements().size(),
                         ""
                 ),
                 p -> new ClanAchievementsMenu(this.plugin, p).openMenu()
@@ -132,9 +132,9 @@ public class ClanProfileMenu extends BaseMenu {
                 "&#ffd166&lUpgrades",
                 List.of(
                         "",
-                        " &7Upgrades comprados: &f" + clan.getUpgrades().size(),
-                        " &7Casas: &f" + clan.getHomeCount() + "/" + clan.getMaxHomes(),
-                        " &7Mails: &f" + clan.getMailCount(),
+                        " &#AAAAAAUpgrades comprados: &#FFFFFF" + clan.getUpgrades().size(),
+                        " &#AAAAAACasas: &#FFFFFF" + clan.getHomeCount() + "/" + clan.getMaxHomes(),
+                        " &#AAAAAAMails: &#FFFFFF" + clan.getMailCount(),
                         ""
                 ),
                 p -> new ClanShopMenu(this.plugin, p).openMenu()
@@ -142,10 +142,10 @@ public class ClanProfileMenu extends BaseMenu {
 
         this.registerButton(31, new MenuButton(
                 Material.BOOK,
-                "&7&lDescri\u00e7\u00e3o",
+                "&#AAAAAA&lDescri\u00e7\u00e3o",
                 List.of(
                         "",
-                        " &f" + (clan.getDescription().isEmpty() ? "(Sem descri\u00e7\u00e3o definida)" : clan.getDescription()),
+                        " &#FFFFFF" + (clan.getDescription().isEmpty() ? "(Sem descri\u00e7\u00e3o definida)" : clan.getDescription()),
                         ""
                 ),
                 p -> {}
@@ -153,10 +153,10 @@ public class ClanProfileMenu extends BaseMenu {
 
         this.registerButton(33, new MenuButton(
                 Material.OAK_SIGN,
-                "&7&lMOTD",
+                "&#AAAAAA&lMOTD",
                 List.of(
                         "",
-                        " &f" + (clan.getMotd().isEmpty() ? "(Sem MOTD definida)" : clan.getMotd()),
+                        " &#FFFFFF" + (clan.getMotd().isEmpty() ? "(Sem MOTD definida)" : clan.getMotd()),
                         ""
                 ),
                 p -> {}
@@ -172,12 +172,12 @@ public class ClanProfileMenu extends BaseMenu {
     }
 
     private String getLevelBar(int current, int max) {
-        StringBuilder bar = new StringBuilder("&7[");
+        StringBuilder bar = new StringBuilder("&#AAAAAA[");
         int filled = Math.min(current, 20);
         for (int i = 0; i < 20; i++) {
-            bar.append(i < filled ? "&#06d6a0\u2588" : "&8\u2591");
+            bar.append(i < filled ? "&#06d6a0\u2588" : "&#555555\u2591");
         }
-        bar.append("&7]");
+        bar.append("&#AAAAAA]");
         return bar.toString();
     }
 }
