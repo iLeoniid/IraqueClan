@@ -271,44 +271,6 @@ conquistas:
       recompensa-xp: 1000
 
 # --------------------------------------------------
-#  MISSÕES
-#  Sistema de missões para os clãs
-# --------------------------------------------------
-missoes:
-  # Ativar/desativar sistema de missões
-  habilitado: true
-  # Tempo de atualização das missões em horas
-  tempo-atualizacao-horas: 24
-  # Número máximo de missões ativas por clã
-  max-missoes-ativas: 3
-  # Tipos de missões disponíveis
-  tipos:
-    # Missão de matar monstros
-    MATAR_MONSTROS:
-      nome: "&cCaçar Monstros"
-      quantidade-minima: 10
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 5
-    # Missão de minerar blocos
-    MINERAR_BLOCOS:
-      nome: "&6Minerar Blocos"
-      quantidade-minima: 50
-      quantidade-maxima: 500
-      multiplicador-recompensa-xp: 3
-    # Missão de ganhar dinheiro
-    GANHAR_DINHEIRO:
-      nome: "&eGanhar Dinheiro"
-      quantidade-minima: 1000
-      quantidade-maxima: 50000
-      multiplicador-recompensa-dinheiro: 0.1
-    # Missão de ganhar XP
-    GANHAR_XP:
-      nome: "&bGanhar XP"
-      quantidade-minima: 100
-      quantidade-maxima: 1000
-      multiplicador-recompensa-xp: 2
-
-# --------------------------------------------------
 #  PROTEÇÃO
 #  Sistema de proteção de território do clã
 # --------------------------------------------------
