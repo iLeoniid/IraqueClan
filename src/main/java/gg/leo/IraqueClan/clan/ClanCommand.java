@@ -2,6 +2,7 @@ package gg.leo.IraqueClan.clan;
 
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.menu.ClanMenu;
+import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.war.WarAcceptCommand;
 import gg.leo.IraqueClan.war.WarCommand;
 import java.util.ArrayList;
@@ -56,6 +57,7 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
         this.subCommands.put("xp", new ClanXpCommand(plugin));
         this.subCommands.put("ajuda", new ClanHelpSubCommand(plugin));
         this.subCommands.put("help", new ClanHelpSubCommand(plugin));
+        this.subCommands.put("reload", new ClanReloadSubCommand(plugin));
     }
 
     @Override
@@ -183,6 +185,25 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
         @Override
         public void execute(Player player, String[] args) {
             new ClanMenu(this.plugin, player).openMenu();
+        }
+    }
+
+    private static class ClanReloadSubCommand implements ClanSubCommand {
+        private final IraqueClan plugin;
+
+        ClanReloadSubCommand(IraqueClan plugin) {
+            this.plugin = plugin;
+        }
+
+        @Override
+        public void execute(Player player, String[] args) {
+            if (!player.isOp()) {
+                player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("no-permission"));
+                return;
+            }
+            java.util.List<String> reloaded = this.plugin.getConfigManager().reloadAll();
+            player.sendMessage(ItemBuilder.color("&#55FF55[IraqueClan] &#FFFFFFPlugin recarregado com sucesso!"));
+            player.sendMessage(ItemBuilder.color("&#AAAAAAArquivos recarregados: &#FFFF55" + String.join(", ", reloaded)));
         }
     }
 

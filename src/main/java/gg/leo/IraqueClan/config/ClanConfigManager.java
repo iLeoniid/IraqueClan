@@ -58,6 +58,20 @@ public class ClanConfigManager {
         this.loadWar();
         this.loadPermissions();
         reloaded.add("config settings");
+        this.loadMessages();
+        reloaded.add("messages.yml");
+        if (this.plugin.getQuestManager() != null) {
+            this.plugin.getQuestManager().reloadConfig();
+            reloaded.add("quests.yml");
+        }
+        if (this.plugin.getClanManager() != null) {
+            this.plugin.getClanManager().load();
+            reloaded.add("clan data");
+        }
+        if (this.plugin.getAchievementManager() != null) {
+            this.plugin.getAchievementManager().loadAchievements();
+            reloaded.add("achievements");
+        }
         return reloaded;
     }
 
