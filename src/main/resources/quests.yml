@@ -1,8 +1,7 @@
 # --------------------------------------------------
 #  MISSÕES
 #  Sistema de missões para os clãs
-#  Cada quest tem um "tracker" que define qual
-#  evento do servidor incrementa o progresso.
+#  Versão hardcore - quantidades altas para clãs avançados
 # --------------------------------------------------
 missoes:
   habilitado: false
@@ -15,163 +14,163 @@ missoes:
     #  MATAR MONSTROS
     # =============================================
     MATAR_ZUMBIS:
-      nome: "&#FF5555Matar Zumbis"
+      nome: "&#FF5555Caçar Zumbis"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 5
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_ESQUELETOS:
-      nome: "&#FF5555Matar Esqueletos"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 5
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_CREEPERS:
-      nome: "&#55FF55Matar Creepers"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 5
-      quantidade-maxima: 50
+      quantidade-minima: 500
+      quantidade-maxima: 3000
       multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
-    MATAR_ARANHAS:
-      nome: "&#FF5555Matar Aranhas"
+    MATAR_ESQUELETOS:
+      nome: "&#FF5555Caçar Esqueletos"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 500
+      quantidade-maxima: 3000
+      multiplicador-recompensa-xp: 8
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_CREEPERS:
+      nome: "&#55FF55Eliminar Creepers"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 300
+      quantidade-maxima: 2000
+      multiplicador-recompensa-xp: 12
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_ARANHAS:
+      nome: "&#FF5555Exterminar Aranhas"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 400
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
     MATAR_ENDERMEN:
-      nome: "&#AA55FFEndermans"
+      nome: "&#AA55FFCaçar Endermans"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 5
-      quantidade-maxima: 40
-      multiplicador-recompensa-xp: 10
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_BLACES:
-      nome: "&#FFAA00Matar Blazes"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 12
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_GHASTS:
-      nome: "&#FFFFFFMatar Ghasts"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 3
-      quantidade-maxima: 15
+      quantidade-minima: 200
+      quantidade-maxima: 1500
       multiplicador-recompensa-xp: 15
       multiplicador-recompensa-dinheiro: 0
 
+    MATAR_BLACES:
+      nome: "&#FFAA00Caçar Blazes"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 150
+      quantidade-maxima: 1000
+      multiplicador-recompensa-xp: 18
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_GHASTS:
+      nome: "&#FFFFFFEliminar Ghasts"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 50
+      quantidade-maxima: 500
+      multiplicador-recompensa-xp: 25
+      multiplicador-recompensa-dinheiro: 0
+
     MATAR_WITCHES:
-      nome: "&#AA55FFMatar Bruxas"
+      nome: "&#AA55FFCaçar Bruxas"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 10
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_HUSKS:
-      nome: "&#FFAA00Matar Husks"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 6
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_STRAYS:
-      nome: "&#AAAAAAMatar Strays"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 6
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_DROWNED:
-      nome: "&#55AAFFMatar Drowned"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 10
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 6
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_PHANTOMS:
-      nome: "&#55FFFFMatar Phantoms"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 3
-      quantidade-maxima: 20
-      multiplicador-recompensa-xp: 12
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_PILLAGERS:
-      nome: "&#5555FFMatar Pillagers"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 10
-      multiplicador-recompensa-dinheiro: 0
-
-    MATAR_VINDICATORS:
-      nome: "&#FFFFFFMatar Vindicators"
-      tracker: MATAR_MONSTROS
-      quantidade-minima: 3
-      quantidade-maxima: 20
+      quantidade-minima: 200
+      quantidade-maxima: 1200
       multiplicador-recompensa-xp: 14
       multiplicador-recompensa-dinheiro: 0
 
-    MATAR_EVOKERS:
-      nome: "&#AA55FFMatar Evokers"
+    MATAR_HUSKS:
+      nome: "&#FFAA00Caçar Husks"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 2
-      quantidade-maxima: 10
+      quantidade-minima: 400
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 9
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_STRAYS:
+      nome: "&#AAAAAAExterminar Strays"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 400
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 9
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_DROWNED:
+      nome: "&#55AFFFCaçar Drowned"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 400
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 9
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_PHANTOMS:
+      nome: "&#55FFEliminar Phantoms"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 100
+      quantidade-maxima: 800
+      multiplicador-recompensa-xp: 18
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_PILLAGERS:
+      nome: "&#5555FFCaçar Pillagers"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 200
+      quantidade-maxima: 1200
+      multiplicador-recompensa-xp: 14
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_VINDICATORS:
+      nome: "&#FFFFFFEliminar Vindicators"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 100
+      quantidade-maxima: 800
       multiplicador-recompensa-xp: 20
+      multiplicador-recompensa-dinheiro: 0
+
+    MATAR_EVOKERS:
+      nome: "&#AA55FFEliminar Evokers"
+      tracker: MATAR_MONSTROS
+      quantidade-minima: 50
+      quantidade-maxima: 400
+      multiplicador-recompensa-xp: 30
       multiplicador-recompensa-dinheiro: 0
 
     CAÇADA_GERAL:
       nome: "&#FF5555Caçada Geral"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1000
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     ELIMINAR_HOSTIS:
       nome: "&#FF5555Eliminar Hostis"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 30
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     NOITE_CAÇADORA:
       nome: "&#5555FFNoite Caçadora"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 15
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 6
+      quantidade-minima: 800
+      quantidade-maxima: 4000
+      multiplicador-recompensa-xp: 7
       multiplicador-recompensa-dinheiro: 0
 
     GUERRA_TOTAL:
       nome: "&#FF0000Guerra Total"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 50
-      quantidade-maxima: 300
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 2000
+      quantidade-maxima: 10000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     EXTERMINIO:
       nome: "&#FF5555Exterminio"
       tracker: MATAR_MONSTROS
-      quantidade-minima: 40
-      quantidade-maxima: 250
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 7000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -180,156 +179,156 @@ missoes:
     CAÇAR_JOGADORES:
       nome: "&#FF0000Caçar Jogadores"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 1
-      quantidade-maxima: 5
-      multiplicador-recompensa-xp: 25
+      quantidade-minima: 10
+      quantidade-maxima: 40
+      multiplicador-recompensa-xp: 40
       multiplicador-recompensa-dinheiro: 0
 
     PVP_INTENSO:
       nome: "&#FF5555PvP Intenso"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 3
-      quantidade-maxima: 10
-      multiplicador-recompensa-xp: 20
+      quantidade-minima: 15
+      quantidade-maxima: 50
+      multiplicador-recompensa-xp: 35
       multiplicador-recompensa-dinheiro: 0
 
     DOMINAR_CAMPO:
       nome: "&#FFAA00Dominar Campo"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 2
-      quantidade-maxima: 8
-      multiplicador-recompensa-xp: 22
+      quantidade-minima: 20
+      quantidade-maxima: 60
+      multiplicador-recompensa-xp: 30
       multiplicador-recompensa-dinheiro: 0
 
     COMBATE_MORTAL:
       nome: "&#FF0000Combate Mortal"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 5
-      quantidade-maxima: 20
-      multiplicador-recompensa-xp: 15
+      quantidade-minima: 30
+      quantidade-maxima: 80
+      multiplicador-recompensa-xp: 25
       multiplicador-recompensa-dinheiro: 0
 
     DESAFIO_PVP:
       nome: "&#FF55FFDesafio PvP"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 1
-      quantidade-maxima: 3
-      multiplicador-recompensa-xp: 30
+      quantidade-minima: 5
+      quantidade-maxima: 25
+      multiplicador-recompensa-xp: 50
       multiplicador-recompensa-dinheiro: 0
 
     GLADIADOR:
       nome: "&#FFAA00Gladiador"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 3
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 18
+      quantidade-minima: 25
+      quantidade-maxima: 70
+      multiplicador-recompensa-xp: 28
       multiplicador-recompensa-dinheiro: 0
 
     GUERREIRO_Elite:
       nome: "&#FF0000Guerreiro Elite"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 5
-      quantidade-maxima: 25
-      multiplicador-recompensa-xp: 12
+      quantidade-minima: 40
+      quantidade-maxima: 100
+      multiplicador-recompensa-xp: 20
       multiplicador-recompensa-dinheiro: 0
 
     ASSASSINO:
       nome: "&#5555FFAssassino"
       tracker: MATAR_JOGADORES
-      quantidade-minima: 2
-      quantidade-maxima: 12
-      multiplicador-recompensa-xp: 20
+      quantidade-minima: 15
+      quantidade-maxima: 50
+      multiplicador-recompensa-xp: 35
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
     #  MINERAR BLOCOS
     # =============================================
-    MINERACAO BASICA:
+    MINERACAO_BASICA:
       nome: "&#AAAAAAMineração Básica"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 50
-      quantidade-maxima: 300
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 3000
+      quantidade-maxima: 15000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_PEDRA:
       nome: "&#AAAAAAMinar Pedra"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 100
-      quantidade-maxima: 500
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 5000
+      quantidade-maxima: 25000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_CARVAO:
       nome: "&#555555Minerar Carvão"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 30
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 2000
+      quantidade-maxima: 10000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_FERRO:
       nome: "&#FFAA88Minerar Ferro"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 20
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_OURO:
       nome: "&#FFFF55Minerar Ouro"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 6
+      quantidade-minima: 800
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 10
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_DIAMANTE:
       nome: "&#55FFFFMinerar Diamante"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 10
+      quantidade-minima: 300
+      quantidade-maxima: 2000
+      multiplicador-recompensa-xp: 18
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_ESMERALDA:
       nome: "&#55FF55Minerar Esmeralda"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 3
-      quantidade-maxima: 20
-      multiplicador-recompensa-xp: 12
+      quantidade-minima: 200
+      quantidade-maxima: 1500
+      multiplicador-recompensa-xp: 20
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_REDSTONE:
       nome: "&#FF5555Minerar Redstone"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     MINERAR_LAPIZ:
       nome: "&#5555FFMinerar Lapis"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 15
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1000
+      quantidade-maxima: 6000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     EXPEDICAO_MINEIRA:
       nome: "&#AAAAAAExpedição Mineira"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 150
-      quantidade-maxima: 800
-      multiplicador-recompensa-xp: 1
+      quantidade-minima: 10000
+      quantidade-maxima: 50000
+      multiplicador-recompensa-xp: 2
       multiplicador-recompensa-dinheiro: 0
 
     ESCAVACAO_PROFUNDA:
       nome: "&#FFAA00Escavação Profunda"
       tracker: MINERAR_BLOCOS
-      quantidade-minima: 200
-      quantidade-maxima: 1000
-      multiplicador-recompensa-xp: 1
+      quantidade-minima: 15000
+      quantidade-maxima: 60000
+      multiplicador-recompensa-xp: 2
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -338,81 +337,81 @@ missoes:
     CORTAR_OAK:
       nome: "&#AA8855Cortar Carvalho"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_SPRUCE:
       nome: "&#554433Cortar Spruce"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_BIRCH:
       nome: "&#DDDDC0Cortar Birch"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_JUNGLE:
       nome: "&#557733Cortar Jungle"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_ACACIA:
       nome: "&#AA7744Cortar Acácia"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_DARK_OAK:
       nome: "&#332211Cortar Dark Oak"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CORTAR_MANGUE:
       nome: "&#CC4444Cortar Mangue"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     DESMATAMENTO:
       nome: "&#55FF55Desmatamento"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 50
-      quantidade-maxima: 300
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 5000
+      quantidade-maxima: 20000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     COLETA_MADEIRA:
       nome: "&#AA8855Coleta de Madeira"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 30
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 3000
+      quantidade-maxima: 15000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     SERRAR_MAKEIRA:
       nome: "&#AA8855Serrar Madeira"
       tracker: CORTAR_MADEIRA
-      quantidade-minima: 40
-      quantidade-maxima: 250
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 4000
+      quantidade-maxima: 18000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -421,81 +420,81 @@ missoes:
     COLHER_TRIGO:
       nome: "&#FFFF55Colher Trigo"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 2000
+      quantidade-maxima: 10000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_CENOURAS:
       nome: "&#FFAA00Colher Cenouras"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 15
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_BATATAS:
       nome: "&#FFAA00Colher Batatas"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 15
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1500
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_BETERRABA:
       nome: "&#FF5555Colher Beterraba"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 10
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1000
+      quantidade-maxima: 6000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_MELANCIA:
       nome: "&#55FF55Colher Melancia"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 10
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1000
+      quantidade-maxima: 6000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_ABOBORA:
       nome: "&#FFAA00Colher Abóbora"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 10
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 800
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 7
       multiplicador-recompensa-dinheiro: 0
 
     COLHER_WART:
       nome: "&#55FF55Colher Nether Wart"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 10
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 1000
+      quantidade-maxima: 6000
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
     COLHEITA_GERAL:
       nome: "&#FFFF55Colheita Geral"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 30
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 3000
+      quantidade-maxima: 15000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     FARM_INTENSO:
       nome: "&#55FF55Farm Intenso"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 50
-      quantidade-maxima: 400
+      quantidade-minima: 5000
+      quantidade-maxima: 25000
       multiplicador-recompensa-xp: 2
       multiplicador-recompensa-dinheiro: 0
 
     COLHEITA_MASSIVA:
       nome: "&#FFFF55Colheita Massiva"
       tracker: COLHER_PLANTAS
-      quantidade-minima: 100
-      quantidade-maxima: 600
-      multiplicador-recompensa-xp: 1
+      quantidade-minima: 8000
+      quantidade-maxima: 40000
+      multiplicador-recompensa-xp: 2
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -504,41 +503,41 @@ missoes:
     CONSTRUIR_BASE:
       nome: "&#5555FFConstruir Base"
       tracker: CONSTRUIR_BLOCOS
-      quantidade-minima: 50
-      quantidade-maxima: 300
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 3000
+      quantidade-maxima: 15000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     CONSTRUIR_MURO:
       nome: "&#AAAAAAConstruir Muro"
       tracker: CONSTRUIR_BLOCOS
-      quantidade-minima: 30
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 2000
+      quantidade-maxima: 12000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CONSTRUIR_TORRE:
       nome: "&#FFAA00Construir Torre"
       tracker: CONSTRUIR_BLOCOS
-      quantidade-minima: 20
-      quantidade-maxima: 150
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1500
+      quantidade-maxima: 10000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     OBRA_GRANDE:
       nome: "&#FF55FFObra Grande"
       tracker: CONSTRUIR_BLOCOS
-      quantidade-minima: 100
-      quantidade-maxima: 500
-      multiplicador-recompensa-xp: 1
+      quantidade-minima: 5000
+      quantidade-maxima: 30000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     CONSTRUIR_PONTE:
       nome: "&#55FFFFConstruir Ponte"
       tracker: CONSTRUIR_BLOCOS
-      quantidade-minima: 20
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 1000
+      quantidade-maxima: 8000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -547,41 +546,41 @@ missoes:
     PLANTAR_ARVORES:
       nome: "&#55FF55Plantar Árvores"
       tracker: PLANTAR
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 500
+      quantidade-maxima: 3000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     PLANTAR_CULTURA:
       nome: "&#FFFF55Plantar Culturas"
       tracker: PLANTAR
-      quantidade-minima: 20
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1000
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     PLANTAR_FLORES:
       nome: "&#FF55FFPlantar Flores"
       tracker: PLANTAR
-      quantidade-minima: 10
-      quantidade-maxima: 40
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 300
+      quantidade-maxima: 2000
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
     JARDIM_COMPLETO:
       nome: "&#55FF55Jardim Completo"
       tracker: PLANTAR
-      quantidade-minima: 15
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 800
+      quantidade-maxima: 4000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     PLANTIO_MASSIVO:
       nome: "&#FFFF55Plantio Massivo"
       tracker: PLANTAR
-      quantidade-minima: 50
-      quantidade-maxima: 200
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 2000
+      quantidade-maxima: 10000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -590,41 +589,41 @@ missoes:
     PESCAR_PEIXES:
       nome: "&#55FFFFPescar Peixes"
       tracker: PESCAR
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 100
+      quantidade-maxima: 500
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
-    PESCAR tesouros:
+    PESCAR_TESOUROS:
       nome: "&#FFFF55Pescar Tesouros"
       tracker: PESCAR
-      quantidade-minima: 3
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 10
+      quantidade-minima: 30
+      quantidade-maxima: 200
+      multiplicador-recompensa-xp: 15
       multiplicador-recompensa-dinheiro: 0
 
     PESCARIA_RELAXANTE:
       nome: "&#55FFFFPescaria Relaxante"
       tracker: PESCAR
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 150
+      quantidade-maxima: 700
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     PESCARIA_PROFISSIONAL:
       nome: "&#55FFFFPescaria Profissional"
       tracker: PESCAR
-      quantidade-minima: 20
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 200
+      quantidade-maxima: 800
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     PESCARIA_MASSIVA:
       nome: "&#55FFFFPescaria Massiva"
       tracker: PESCAR
-      quantidade-minima: 30
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 300
+      quantidade-maxima: 1000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -633,40 +632,40 @@ missoes:
     DOMAR_CAVALOS:
       nome: "&#FFAA00Domar Cavalos"
       tracker: DOMAR_ANIMAIS
-      quantidade-minima: 1
-      quantidade-maxima: 5
+      quantidade-minima: 25
+      quantidade-maxima: 100
       multiplicador-recompensa-xp: 15
       multiplicador-recompensa-dinheiro: 0
 
     DOMAR_LOBOS:
       nome: "&#AAAAAADomar Lobos"
       tracker: DOMAR_ANIMAIS
-      quantidade-minima: 2
-      quantidade-maxima: 8
+      quantidade-minima: 30
+      quantidade-maxima: 120
       multiplicador-recompensa-xp: 12
       multiplicador-recompensa-dinheiro: 0
 
     DOMAR_GATOS:
       nome: "&#FFAA00Domar Gatos"
       tracker: DOMAR_ANIMAIS
-      quantidade-minima: 2
-      quantidade-maxima: 8
+      quantidade-minima: 30
+      quantidade-maxima: 120
       multiplicador-recompensa-xp: 12
       multiplicador-recompensa-dinheiro: 0
 
     DOMAR_PAPAGAIOS:
       nome: "&#55FF55Domar Papagaios"
       tracker: DOMAR_ANIMAIS
-      quantidade-minima: 3
-      quantidade-maxima: 10
+      quantidade-minima: 40
+      quantidade-maxima: 150
       multiplicador-recompensa-xp: 10
       multiplicador-recompensa-dinheiro: 0
 
     COLECIONAR_ANIMAIS:
       nome: "&#FFAA00Colecionar Animais"
       tracker: DOMAR_ANIMAIS
-      quantidade-minima: 5
-      quantidade-maxima: 15
+      quantidade-minima: 50
+      quantidade-maxima: 200
       multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
@@ -676,41 +675,41 @@ missoes:
     ARQUEIRO:
       nome: "&#FFAA00Arqueiro"
       tracker: USAR_ARCO
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 500
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     TIRADOR_DE_ELITE:
       nome: "&#FF5555Tirador de Elite"
       tracker: USAR_ARCO
-      quantidade-minima: 20
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 800
+      quantidade-maxima: 4000
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     CHUVA_DE_FLECHAS:
       nome: "&#FFAA00Chuva de Flechas"
       tracker: USAR_ARCO
-      quantidade-minima: 30
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 1000
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     ARCO_E_FLECHA:
       nome: "&#55FFFFArco e Flecha"
       tracker: USAR_ARCO
-      quantidade-minima: 5
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 6
+      quantidade-minima: 300
+      quantidade-maxima: 1500
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
     ATIRADOR_PROFISSIONAL:
       nome: "&#FF5555Atirador Profissional"
       tracker: USAR_ARCO
-      quantidade-minima: 15
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 600
+      quantidade-maxima: 3000
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -719,41 +718,41 @@ missoes:
     CRAFTAR_FERRAMENTAS:
       nome: "&#AAAAAACraftar Ferramentas"
       tracker: CRAFTAR
-      quantidade-minima: 5
-      quantidade-maxima: 25
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 200
+      quantidade-maxima: 800
+      multiplicador-recompensa-xp: 6
       multiplicador-recompensa-dinheiro: 0
 
     CRAFTAR_ARMADURAS:
       nome: "&#FFAA00Craftar Armaduras"
       tracker: CRAFTAR
-      quantidade-minima: 3
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 8
+      quantidade-minima: 100
+      quantidade-maxima: 500
+      multiplicador-recompensa-xp: 10
       multiplicador-recompensa-dinheiro: 0
 
     PRODUCAO_MASSIVA:
       nome: "&#55FF55Produção Massiva"
       tracker: CRAFTAR
-      quantidade-minima: 20
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 500
+      quantidade-maxima: 2000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     MESTRE_CRAFTEIRO:
       nome: "&#FFAA00Mestre Crafter"
       tracker: CRAFTAR
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 300
+      quantidade-maxima: 1200
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     FABRICA_TOTAL:
       nome: "&#55FFFFFábrica Total"
       tracker: CRAFTAR
-      quantidade-minima: 30
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 800
+      quantidade-maxima: 3000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -762,41 +761,41 @@ missoes:
     ENCANTAR_ARMAS:
       nome: "&#AA55FFEncantar Armas"
       tracker: ENCANTAR
-      quantidade-minima: 1
-      quantidade-maxima: 5
-      multiplicador-recompensa-xp: 20
+      quantidade-minima: 25
+      quantidade-maxima: 100
+      multiplicador-recompensa-xp: 25
       multiplicador-recompensa-dinheiro: 0
 
     ENCANTAR_ARMADURAS:
       nome: "&#AA55FFEncantar Armaduras"
       tracker: ENCANTAR
-      quantidade-minima: 1
-      quantidade-maxima: 5
-      multiplicador-recompensa-xp: 20
+      quantidade-minima: 25
+      quantidade-maxima: 100
+      multiplicador-recompensa-xp: 25
       multiplicador-recompensa-dinheiro: 0
 
     ENCANTAR_FERRAMENTAS:
       nome: "&#AA55FFEncantar Ferramentas"
       tracker: ENCANTAR
-      quantidade-minima: 2
-      quantidade-maxima: 8
-      multiplicador-recompensa-xp: 15
+      quantidade-minima: 40
+      quantidade-maxima: 150
+      multiplicador-recompensa-xp: 20
       multiplicador-recompensa-dinheiro: 0
 
     MAGO_DO_ENCATAMENTO:
       nome: "&#55FFFFMago do Encantamento"
       tracker: ENCANTAR
-      quantidade-minima: 3
-      quantidade-maxima: 10
-      multiplicador-recompensa-xp: 12
+      quantidade-minima: 50
+      quantidade-maxima: 200
+      multiplicador-recompensa-xp: 18
       multiplicador-recompensa-dinheiro: 0
 
     ENCANTAMENTO_MASSIVO:
       nome: "&#AA55FFEncantamento Massivo"
       tracker: ENCANTAR
-      quantidade-minima: 5
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 10
+      quantidade-minima: 80
+      quantidade-maxima: 300
+      multiplicador-recompensa-xp: 12
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -805,41 +804,41 @@ missoes:
     COMER_BEM:
       nome: "&#FF5555Comer Bem"
       tracker: COMER
-      quantidade-minima: 10
-      quantidade-maxima: 50
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 500
+      quantidade-maxima: 2500
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     BANQUETE:
       nome: "&#FFAA00Banquete"
       tracker: COMER
-      quantidade-minima: 15
-      quantidade-maxima: 60
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 800
+      quantidade-maxima: 3000
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
 
     SOBREVIVENCIA:
       nome: "&#55FF55Sobrevivência"
       tracker: COMER
-      quantidade-minima: 20
-      quantidade-maxima: 80
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 1000
+      quantidade-maxima: 4000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     GASTRONOMICO:
       nome: "&#FF55FFGastronômico"
       tracker: COMER
-      quantidade-minima: 25
-      quantidade-maxima: 100
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 1200
+      quantidade-maxima: 5000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     COMEDOR_COMPULSIVO:
       nome: "&#FFAA00Comedor Compulsivo"
       tracker: COMER
-      quantidade-minima: 30
-      quantidade-maxima: 120
-      multiplicador-recompensa-xp: 2
+      quantidade-minima: 1500
+      quantidade-maxima: 6000
+      multiplicador-recompensa-xp: 3
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -848,33 +847,33 @@ missoes:
     BEBIDAS_MAGICAS:
       nome: "&#AA55FFBebidas Mágicas"
       tracker: BEBER
-      quantidade-minima: 3
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 8
+      quantidade-minima: 50
+      quantidade-maxima: 200
+      multiplicador-recompensa-xp: 12
       multiplicador-recompensa-dinheiro: 0
 
     POCOES_DE_COMBATE:
       nome: "&#FF5555Poções de Combate"
       tracker: BEBER
-      quantidade-minima: 2
-      quantidade-maxima: 10
-      multiplicador-recompensa-xp: 10
+      quantidade-minima: 30
+      quantidade-maxima: 150
+      multiplicador-recompensa-xp: 15
       multiplicador-recompensa-dinheiro: 0
 
     ELIXIR_DA_VIDA:
       nome: "&#55FF55Elixir da Vida"
       tracker: BEBER
-      quantidade-minima: 5
-      quantidade-maxima: 20
-      multiplicador-recompensa-xp: 6
+      quantidade-minima: 80
+      quantidade-maxima: 300
+      multiplicador-recompensa-xp: 10
       multiplicador-recompensa-dinheiro: 0
 
     MESTRE_POTION:
       nome: "&#AA55FFMestre Poções"
       tracker: BEBER
-      quantidade-minima: 10
-      quantidade-maxima: 30
-      multiplicador-recompensa-xp: 5
+      quantidade-minima: 100
+      quantidade-maxima: 400
+      multiplicador-recompensa-xp: 8
       multiplicador-recompensa-dinheiro: 0
 
     # =============================================
@@ -883,23 +882,23 @@ missoes:
     TRANSPORTAR_AGUA:
       nome: "&#5555FFTransportar Água"
       tracker: USAR_BALDE
-      quantidade-minima: 5
-      quantidade-maxima: 25
-      multiplicador-recompensa-xp: 4
+      quantidade-minima: 100
+      quantidade-maxima: 500
+      multiplicador-recompensa-xp: 5
       multiplicador-recompensa-dinheiro: 0
 
     TRANSPORTAR_LAVA:
       nome: "&#FF5500Transportar Lava"
       tracker: USAR_BALDE
-      quantidade-minima: 3
-      quantidade-maxima: 15
-      multiplicador-recompensa-xp: 8
+      quantidade-minima: 50
+      quantidade-maxima: 300
+      multiplicador-recompensa-xp: 10
       multiplicador-recompensa-dinheiro: 0
 
     OBRA_HIDRAULICA:
       nome: "&#55FFFFObra Hidráulica"
       tracker: USAR_BALDE
-      quantidade-minima: 10
-      quantidade-maxima: 40
-      multiplicador-recompensa-xp: 3
+      quantidade-minima: 150
+      quantidade-maxima: 600
+      multiplicador-recompensa-xp: 4
       multiplicador-recompensa-dinheiro: 0
