@@ -1,9 +1,12 @@
 package gg.leo.IraqueClan.clan;
 
 import gg.leo.IraqueClan.IraqueClan;
+import gg.leo.IraqueClan.utils.ItemBuilder;
+import java.util.regex.Pattern;
 import org.bukkit.entity.Player;
 
 public class ClanColorCommand implements ClanSubCommand {
+    private static final Pattern HEX_PATTERN = Pattern.compile("^#?([0-9A-Fa-f]{6})$");
     private final IraqueClan plugin;
 
     public ClanColorCommand(IraqueClan plugin) {
@@ -25,15 +28,17 @@ public class ClanColorCommand implements ClanSubCommand {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("usage-color"));
             return;
         }
-        String hexColor = args[1];
-        if (!hexColor.matches("^&#([0-9A-Fa-f]{6})$")) {
+        String raw = args[1];
+        var matcher = HEX_PATTERN.matcher(raw);
+        if (!matcher.matches()) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("color.invalid"));
             return;
         }
+        String hexColor = "&#" + matcher.group(1);
         boolean changed = this.plugin.getClanManager().changeColor(player.getUniqueId(), hexColor);
         if (changed) {
-            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("color.changed")
-                    .replace("{color}", hexColor));
+            player.sendMessage(ItemBuilder.color(this.plugin.getConfigManager().getPrefixedMessage("color.changed")
+                    .replace("{color}", hexColor + clan.getTag())));
             this.plugin.getClanManager().addLog(player.getUniqueId(), "COLOR_CHANGED", "Cor alterada para " + hexColor);
             this.plugin.sendDiscordMessage(player.getName() + " alterou a cor do clã " + clan.getName());
         }

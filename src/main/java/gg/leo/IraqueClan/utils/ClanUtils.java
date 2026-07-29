@@ -4,7 +4,6 @@ import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
 import java.util.UUID;
 import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
 
 public class ClanUtils {
     private static IraqueClan plugin;
@@ -34,8 +33,11 @@ public class ClanUtils {
         return clan.getTag();
     }
 
+    @SuppressWarnings("deprecation")
     public static String getPlayerName(UUID uuid) {
-        OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
+        org.bukkit.entity.Player online = Bukkit.getPlayer(uuid);
+        if (online != null && online.isOnline()) return online.getName();
+        org.bukkit.OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
         return player.getName() != null ? player.getName() : uuid.toString().substring(0, 8);
     }
 }

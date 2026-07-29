@@ -16,6 +16,7 @@ public class ClanLogsCommand implements ClanSubCommand {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void execute(Player player, String[] args) {
         Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(player.getUniqueId());
         if (clan == null) {

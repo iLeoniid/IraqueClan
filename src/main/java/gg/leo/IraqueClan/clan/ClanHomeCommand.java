@@ -38,7 +38,7 @@ public class ClanHomeCommand implements ClanSubCommand {
             return;
         }
         Location loc = simpleLoc.toBukkitLocation();
-        if (loc.getWorld() == null) {
+        if (loc == null || loc.getWorld() == null) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("home.world-changed")
                     .replace("{name}", homeName));
             return;

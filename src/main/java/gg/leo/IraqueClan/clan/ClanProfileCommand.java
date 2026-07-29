@@ -15,6 +15,7 @@ public class ClanProfileCommand implements ClanSubCommand {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void execute(Player player, String[] args) {
         Clan clan;
         if (args.length >= 2) {

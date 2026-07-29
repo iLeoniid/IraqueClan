@@ -33,6 +33,7 @@ public class ClanDisbandCommand implements gg.leo.IraqueClan.clan.ClanSubCommand
                         .replace("{clan}", clanName));
             }
         }
+        this.plugin.getWarManager().cancelWarsForClan(java.util.UUID.nameUUIDFromBytes(clan.getName().getBytes()));
         this.plugin.getClanManager().disbandClan(clanName);
     }
 }

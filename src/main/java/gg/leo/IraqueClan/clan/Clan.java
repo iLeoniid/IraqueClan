@@ -30,6 +30,7 @@ public class Clan {
 
         public org.bukkit.Location toBukkitLocation() {
             org.bukkit.World w = org.bukkit.Bukkit.getWorld(this.world);
+            if (w == null) return null;
             return new org.bukkit.Location(w, this.x, this.y, this.z, this.yaw, this.pitch);
         }
 

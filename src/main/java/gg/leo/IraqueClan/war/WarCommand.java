@@ -69,6 +69,8 @@ public class WarCommand implements gg.leo.IraqueClan.clan.ClanSubCommand {
             this.plugin.sendDiscordMessage(this.plugin.getConfigManager().getMessage("war.declared-discord")
                     .replace("{clan1}", challengerClan.getName())
                     .replace("{clan2}", targetClan.getName()));
+        } else {
+            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("war.already-at-war"));
         }
     }
 }

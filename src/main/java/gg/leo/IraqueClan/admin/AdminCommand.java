@@ -78,6 +78,7 @@ public class AdminCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     private boolean handleInspect(CommandSender sender, String[] args) {
         if (args.length < 2) {
             sender.sendMessage(ItemBuilder.color(this.plugin.getConfigManager().getPrefixedMessage("usage-admin-inspect")));

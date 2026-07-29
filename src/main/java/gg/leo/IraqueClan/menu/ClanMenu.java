@@ -2,6 +2,7 @@ package gg.leo.IraqueClan.menu;
 
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
+import gg.leo.IraqueClan.clan.ClanChatCommand;
 import gg.leo.IraqueClan.menu.leaderboard.LeaderboardMainMenu;
 import gg.leo.IraqueClan.utils.ClanUtils;
 import gg.leo.IraqueClan.utils.ItemBuilder;
@@ -316,16 +317,28 @@ public class ClanMenu extends BaseMenu {
                 p -> new ClanLogsMenu(this.plugin, p).openMenu()
         ));
 
+        boolean chatEnabled = ClanChatCommand.isChatEnabled(this.player.getUniqueId());
+
         this.registerButton(51, new MenuButton(
                 Material.ZOMBIE_HEAD,
-                "&#a8dadc&lChat",
+                chatEnabled ? "&#55FF55&lChat &#55FF55[ON]" : "&#FF5555&lChat &#FF5555[OFF]",
                 List.of(
                         "",
-                        " &#AAAAAAToggle do chat do cl\u00e3o",
+                        chatEnabled ? " &#55FF55Chat do cl\u00e3o est\u00e1 ATIVADO" : " &#FF5555Chat do cl\u00e3o est\u00e1 DESATIVADO",
+                        " &#AAAAAAClique para " + (chatEnabled ? "desativar" : "ativar"),
+                        "",
                         " &#AAAAAAMotD: &#FFFFFF" + (clan.getMotd().isEmpty() ? "Nenhuma" : clan.getMotd()),
                         ""
                 ),
-                p -> p.closeInventory()
+                p -> {
+                    ClanChatCommand.toggleChat(p.getUniqueId());
+                    if (ClanChatCommand.isChatEnabled(p.getUniqueId())) {
+                        p.sendMessage(ItemBuilder.color(this.plugin.getConfigManager().getPrefixedMessage("chat.enabled")));
+                    } else {
+                        p.sendMessage(ItemBuilder.color(this.plugin.getConfigManager().getPrefixedMessage("chat.disabled")));
+                    }
+                    new ClanMenu(this.plugin, p).openMenu();
+                }
         ));
     }
 

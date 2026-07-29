@@ -105,7 +105,7 @@ public class ClanConfigManager {
     private void loadPermissions() {
         ConfigurationSection section = this.config.getConfigurationSection("permissions");
         if (section == null) {
-            this.leaderPermissions = List.of("iraquecore.*", "iraqueclan.*");
+            this.leaderPermissions = List.of("iraqueclan.*");
             this.subLeaderPermissions = List.of("iraqueclan.invite", "iraqueclan.kick", "iraqueclan.promote", "iraqueclan.demote");
             this.memberPermissions = List.of("iraqueclan.use", "iraqueclan.chat");
             return;

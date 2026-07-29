@@ -100,7 +100,7 @@ public class ClanProtectionListener implements Listener {
 
         for (Clan.SimpleLocation home : clan.getHomes().values()) {
             Location homeLoc = home.toBukkitLocation();
-            if (homeLoc.getWorld() == null || loc.getWorld() == null) continue;
+            if (homeLoc == null || homeLoc.getWorld() == null || loc.getWorld() == null) continue;
             if (!homeLoc.getWorld().getName().equals(loc.getWorld().getName())) continue;
             double distance = loc.distance(homeLoc);
             if (distance <= radius) return true;

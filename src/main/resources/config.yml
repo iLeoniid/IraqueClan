@@ -361,6 +361,22 @@ discord:
     guerra-fim: true
 
 # --------------------------------------------------
+#  PERMISSÕES POR CARGO
+#  Permissões herdadas por cada cargo no clã
+# --------------------------------------------------
+permissions:
+  LIDER:
+    - "iraqueclan.*"
+  SUB_LIDER:
+    - "iraqueclan.invite"
+    - "iraqueclan.kick"
+    - "iraqueclan.promote"
+    - "iraqueclan.demote"
+  MEMBRO:
+    - "iraqueclan.use"
+    - "iraqueclan.chat"
+
+# --------------------------------------------------
 #  WORLDGUARD
 #  Integração com WorldGuard
 # --------------------------------------------------

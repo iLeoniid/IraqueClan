@@ -36,6 +36,14 @@ public class ClanChatCommand implements ClanSubCommand {
         return CHAT_ENABLED.contains(playerUuid);
     }
 
+    public static void toggleChat(UUID playerUuid) {
+        if (CHAT_ENABLED.contains(playerUuid)) {
+            CHAT_ENABLED.remove(playerUuid);
+        } else {
+            CHAT_ENABLED.add(playerUuid);
+        }
+    }
+
     public static Set<UUID> getChatEnabledPlayers() {
         return Collections.unmodifiableSet(CHAT_ENABLED);
     }

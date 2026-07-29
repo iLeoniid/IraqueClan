@@ -3,22 +3,21 @@ package gg.leo.IraqueClan.war;
 import gg.leo.IraqueClan.IraqueClan;
 import gg.leo.IraqueClan.clan.Clan;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class WarManager {
     private final IraqueClan plugin;
-    private final Map<String, War> activeWars; // key: "clanId1:clanId2"
-    private final Map<UUID, War> pendingWars; // challengerClanId -> War
+    private final Map<String, War> activeWars;
+    private final Map<UUID, War> pendingWars;
 
     public WarManager(IraqueClan plugin) {
         this.plugin = plugin;
-        this.activeWars = new HashMap<>();
-        this.pendingWars = new HashMap<>();
+        this.activeWars = new ConcurrentHashMap<>();
+        this.pendingWars = new ConcurrentHashMap<>();
     }
 
     public void startTask() {
@@ -27,7 +26,7 @@ public class WarManager {
             public void run() {
                 checkExpiredWars();
             }
-        }.runTaskTimerAsynchronously(this.plugin, 1200L, 1200L); // Check every 60 seconds
+        }.runTaskTimer(this.plugin, 1200L, 1200L);
     }
 
     private void checkExpiredWars() {
@@ -59,6 +58,12 @@ public class WarManager {
         }
         Clan winner = this.plugin.getClanManager().getClanByUUID(winnerId);
         Clan loser = this.plugin.getClanManager().getClanByUUID(loserId);
+        if (winner != null) {
+            this.plugin.getClanManager().addWarWin(winner.getName());
+        }
+        if (loser != null) {
+            this.plugin.getClanManager().addWarLoss(loser.getName());
+        }
         if (winner != null && loser != null) {
             this.notifyWarEnd(winner, loser, war);
         }
@@ -68,9 +73,9 @@ public class WarManager {
         Clan challenger = this.plugin.getClanManager().getClanByPlayerDirect(challengerLeaderUuid);
         if (challenger == null) return false;
         if (!challenger.getLeader().equals(challengerLeaderUuid)) return false;
-        // Check if already in war
+        UUID challengerId = UUID.nameUUIDFromBytes(challenger.getName().getBytes());
         for (War war : this.activeWars.values()) {
-            if (war.involvesClan(UUID.fromString(challenger.getName()))) return false;
+            if (war.involvesClan(challengerId)) return false;
         }
         return true;
     }
@@ -78,7 +83,7 @@ public class WarManager {
     public boolean createWar(UUID challengerClanId, UUID defenderClanId, UUID challengerLeader) {
         String key = this.getWarKey(challengerClanId, defenderClanId);
         if (this.activeWars.containsKey(key)) return false;
-        if (this.pendingWars.containsKey(challengerClanId)) return false;
+        if (this.pendingWars.containsKey(defenderClanId)) return false;
         War war = new War(challengerClanId, defenderClanId, challengerLeader);
         this.pendingWars.put(defenderClanId, war);
         return true;
@@ -118,9 +123,8 @@ public class WarManager {
         Clan victimClan = this.plugin.getClanManager().getClanByPlayerDirect(victimUuid);
         if (killerClan == null || victimClan == null) return;
         if (killerClan.getName().equals(victimClan.getName())) return;
-        UUID killerClanId = this.getPlayerClanId(killerUuid);
-        UUID victimClanId = this.getPlayerClanId(victimUuid);
-        if (killerClanId == null || victimClanId == null) return;
+        UUID killerClanId = UUID.nameUUIDFromBytes(killerClan.getName().getBytes());
+        UUID victimClanId = UUID.nameUUIDFromBytes(victimClan.getName().getBytes());
         String key = this.getWarKey(killerClanId, victimClanId);
         War war = this.activeWars.get(key);
         if (war == null) return;
@@ -131,19 +135,50 @@ public class WarManager {
         }
     }
 
-    private UUID getPlayerClanId(UUID playerUuid) {
-        Clan clan = this.plugin.getClanManager().getClanByPlayerDirect(playerUuid);
-        if (clan == null) return null;
-        // Use clan name as a pseudo-ID since we don't have UUID-based clan IDs
-        return UUID.nameUUIDFromBytes(clan.getName().getBytes());
-    }
-
     public void endWar(UUID clanId) {
         War war = this.getActiveWar(clanId);
         if (war == null) return;
         war.setStatus(War.WarStatus.FINALIZADA);
+        UUID winnerId;
+        UUID loserId;
+        if (war.getChallengerKills() > war.getDefenderKills()) {
+            winnerId = war.getChallengerClanId();
+            loserId = war.getDefenderClanId();
+        } else if (war.getDefenderKills() > war.getChallengerKills()) {
+            winnerId = war.getDefenderClanId();
+            loserId = war.getChallengerClanId();
+        } else {
+            Clan c1 = this.plugin.getClanManager().getClanByUUID(war.getChallengerClanId());
+            Clan c2 = this.plugin.getClanManager().getClanByUUID(war.getDefenderClanId());
+            if (c1 != null) this.plugin.getClanManager().addWarDraw(c1.getName());
+            if (c2 != null) this.plugin.getClanManager().addWarDraw(c2.getName());
+            String key = this.getWarKey(war.getChallengerClanId(), war.getDefenderClanId());
+            this.activeWars.remove(key);
+            return;
+        }
+        Clan winner = this.plugin.getClanManager().getClanByUUID(winnerId);
+        Clan loser = this.plugin.getClanManager().getClanByUUID(loserId);
+        if (winner != null) this.plugin.getClanManager().addWarWin(winner.getName());
+        if (loser != null) this.plugin.getClanManager().addWarLoss(loser.getName());
         String key = this.getWarKey(war.getChallengerClanId(), war.getDefenderClanId());
         this.activeWars.remove(key);
+    }
+
+    public void cancelWarsForClan(UUID clanId) {
+        this.activeWars.values().removeIf(war -> {
+            if (war.involvesClan(clanId)) {
+                war.setStatus(War.WarStatus.FINALIZADA);
+                return true;
+            }
+            return false;
+        });
+        this.pendingWars.values().removeIf(war -> {
+            if (war.involvesClan(clanId)) {
+                war.setStatus(War.WarStatus.FINALIZADA);
+                return true;
+            }
+            return false;
+        });
     }
 
     private void notifyWarEnd(Clan winner, Clan loser, War war) {
@@ -151,8 +186,6 @@ public class WarManager {
                 .replace("{winner}", winner.getName())
                 .replace("{kills1}", String.valueOf(war.getChallengerKills()))
                 .replace("{kills2}", String.valueOf(war.getDefenderKills()));
-        String loserMsg = winnerMsg;
-        // Send to online members of both clans
         for (UUID uuid : winner.getMembers().keySet()) {
             org.bukkit.entity.Player player = this.plugin.getServer().getPlayer(uuid);
             if (player != null && player.isOnline()) {
@@ -162,10 +195,9 @@ public class WarManager {
         for (UUID uuid : loser.getMembers().keySet()) {
             org.bukkit.entity.Player player = this.plugin.getServer().getPlayer(uuid);
             if (player != null && player.isOnline()) {
-                player.sendMessage(this.plugin.getConfigManager().deserialize(this.plugin.getConfigManager().translate(loserMsg)));
+                player.sendMessage(this.plugin.getConfigManager().deserialize(this.plugin.getConfigManager().translate(winnerMsg)));
             }
         }
-        // Send to Discord
         this.plugin.sendDiscordMessage(this.plugin.getConfigManager().getMessage("war.ended-discord")
                 .replace("{winner}", winner.getName())
                 .replace("{kills1}", String.valueOf(war.getChallengerKills()))
@@ -173,12 +205,16 @@ public class WarManager {
     }
 
     private String getWarKey(UUID id1, UUID id2) {
-        return id1.toString().compareTo(id2.toString()) < 0 
-            ? id1.toString() + ":" + id2.toString() 
+        return id1.toString().compareTo(id2.toString()) < 0
+            ? id1.toString() + ":" + id2.toString()
             : id2.toString() + ":" + id1.toString();
     }
 
     public void shutdown() {
-        // Wars are not persisted - they reset on server restart
+        for (War war : this.activeWars.values()) {
+            war.setStatus(War.WarStatus.FINALIZADA);
+        }
+        this.activeWars.clear();
+        this.pendingWars.clear();
     }
 }

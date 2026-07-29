@@ -293,9 +293,9 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
                 player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.target-already-in-clan"));
                 return;
             }
-            if (clan.getMemberCount() >= this.plugin.getConfigManager().getMaxMembers()) {
+            if (clan.getMemberCount() >= clan.getMaxMembers()) {
                 player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.clan-full")
-                        .replace("{max}", String.valueOf(this.plugin.getConfigManager().getMaxMembers())));
+                        .replace("{max}", String.valueOf(clan.getMaxMembers())));
                 return;
             }
             this.plugin.getClanManager().setPendingInvite(target.getUniqueId(), player.getUniqueId());

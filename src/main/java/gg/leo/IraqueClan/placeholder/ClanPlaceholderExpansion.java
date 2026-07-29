@@ -46,7 +46,7 @@ public class ClanPlaceholderExpansion extends PlaceholderExpansion {
 
         return switch (identifier) {
             case "clan" -> clan != null ? clan.getName() : "";
-            case "tag" -> clan != null ? clan.getTag() : "";
+            case "tag" -> clan != null ? clan.getFormattedTag() : "";
             case "tag_formatted" -> clan != null ? clan.getFormattedTag() : "";
             case "leader" -> clan != null ? getLeaderName(clan) : "";
             case "members" -> clan != null ? String.valueOf(clan.getMemberCount()) : "0";
@@ -65,10 +65,11 @@ public class ClanPlaceholderExpansion extends PlaceholderExpansion {
             case "homes" -> clan != null ? String.valueOf(clan.getHomeCount()) : "0";
             case "max_homes" -> clan != null ? String.valueOf(clan.getMaxHomes()) : "0";
             case "in_clan" -> clan != null ? "true" : "false";
-            default -> null;
+            default -> "";
         };
     }
 
+    @SuppressWarnings("deprecation")
     private String getLeaderName(Clan clan) {
         var leader = org.bukkit.Bukkit.getOfflinePlayer(clan.getLeader());
         return leader.getName() != null ? leader.getName() : "?";

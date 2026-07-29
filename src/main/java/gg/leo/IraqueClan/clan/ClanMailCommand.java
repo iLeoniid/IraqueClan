@@ -34,6 +34,7 @@ public class ClanMailCommand implements ClanSubCommand {
         }
     }
 
+    @SuppressWarnings("deprecation")
     private void handleRead(Player player, Clan clan) {
         List<Clan.ClanMail> mails = this.plugin.getClanManager().getMails(player.getUniqueId());
         if (mails.isEmpty()) {

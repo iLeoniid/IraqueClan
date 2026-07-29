@@ -1,9 +1,7 @@
 package gg.leo.IraqueClan.clan;
 
 import gg.leo.IraqueClan.IraqueClan;
-import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.RegisteredServiceProvider;
 
 public class ClanBankCommand implements ClanSubCommand {
     private final IraqueClan plugin;
@@ -32,10 +30,43 @@ public class ClanBankCommand implements ClanSubCommand {
         }
     }
 
-    private Economy getEconomy() {
-        RegisteredServiceProvider<Economy> provider = this.plugin.getServer().getServicesManager()
-                .getRegistration(Economy.class);
-        return provider != null ? provider.getProvider() : null;
+    private Object getEconomy() {
+        try {
+            org.bukkit.plugin.RegisteredServiceProvider<?> provider = this.plugin.getServer().getServicesManager()
+                    .getRegistration(Class.forName("net.milkbowl.vault.economy.Economy"));
+            return provider != null ? provider.getProvider() : null;
+        } catch (ClassNotFoundException e) {
+            return null;
+        }
+    }
+
+    private double getBalance(Object economy) {
+        try {
+            return ((net.milkbowl.vault.economy.Economy) economy).getBalance(
+                    (org.bukkit.entity.Player) null);
+        } catch (Exception e) {
+            return 0;
+        }
+    }
+
+    private boolean hasMoney(Object economy, Player player, double amount) {
+        try {
+            return ((net.milkbowl.vault.economy.Economy) economy).has(player, amount);
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private void withdrawMoney(Object economy, Player player, double amount) {
+        try {
+            ((net.milkbowl.vault.economy.Economy) economy).withdrawPlayer(player, amount);
+        } catch (Exception ignored) {}
+    }
+
+    private void depositMoney(Object economy, Player player, double amount) {
+        try {
+            ((net.milkbowl.vault.economy.Economy) economy).depositPlayer(player, amount);
+        } catch (Exception ignored) {}
     }
 
     private void handleBalance(Player player, Clan clan) {
@@ -59,17 +90,17 @@ public class ClanBankCommand implements ClanSubCommand {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("usage-deposit"));
             return;
         }
-        Economy eco = getEconomy();
+        Object eco = getEconomy();
         if (eco == null) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("economy-no-vault"));
             return;
         }
-        if (!eco.has(player, amount)) {
+        if (!hasMoney(eco, player, amount)) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("bank.not-enough-player")
                     .replace("{amount}", String.format("%.2f", amount)));
             return;
         }
-        eco.withdrawPlayer(player, amount);
+        withdrawMoney(eco, player, amount);
         this.plugin.getClanManager().depositClan(player.getUniqueId(), amount);
         player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("bank.deposit")
                 .replace("{amount}", String.format("%.2f", amount)));
@@ -107,9 +138,9 @@ public class ClanBankCommand implements ClanSubCommand {
             return;
         }
         this.plugin.getClanManager().withdrawClan(player.getUniqueId(), amount);
-        Economy eco = getEconomy();
+        Object eco = getEconomy();
         if (eco != null) {
-            eco.depositPlayer(player, amount);
+            depositMoney(eco, player, amount);
         }
         player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("bank.withdraw")
                 .replace("{amount}", String.format("%.2f", amount)));

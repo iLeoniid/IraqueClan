@@ -43,9 +43,6 @@ public class ClanJoinQuitListener implements Listener {
 
         // Remove clan permissions
         this.removeClanPermissions(player);
-
-        // Save clan data
-        this.plugin.getClanManager().saveAll();
     }
 
     public void applyClanPermissions(Player player, Clan clan) {
