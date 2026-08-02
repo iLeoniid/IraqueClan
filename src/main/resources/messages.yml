@@ -59,8 +59,10 @@ invite.accepted: "&#55FF55Você aceitou o convite e entrou no clã &#FFFFFF{clan
 invite.accepted-notify: "&#55FF55&#FFFFFF{player}&#55FF55 entrou no clã!"
 invite.not-invited: "&#FF5555Você não tem convite pendente deste clã."
 invite.player-joined: "&#55FF55&#FFFFFF{player}&#55FF55 entrou no clã!"
-invite.declined: "&#FF5555Você recusou o convite."
+invite.declined: "&#FF5555Você recusou o convite do clã &#FFFFFF{clan}&#FF5555."
 invite.no-pending: "&#FF5555Você não tem convites pendentes."
+invite.all-declined: "&#FF5555Você recusou todos os {count} convites pendentes."
+invite.max-reached: "&#FF5555Limite de convites pendentes atingido ({max})."
 usage-invite: "&#FFFF55Uso: /clan convidar <jogador>"
 
 # Membros

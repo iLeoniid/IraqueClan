@@ -4,6 +4,7 @@ import gg.leo.IraqueClan.admin.AdminCommand;
 import gg.leo.IraqueClan.clan.AchievementManager;
 import gg.leo.IraqueClan.clan.ClanCommand;
 import gg.leo.IraqueClan.clan.ClanManager;
+import gg.leo.IraqueClan.clan.InviteManager;
 import gg.leo.IraqueClan.clan.QuestManager;
 import gg.leo.IraqueClan.config.ClanConfigManager;
 import gg.leo.IraqueClan.listener.ClanChatListener;
@@ -27,6 +28,7 @@ public class IraqueClan extends JavaPlugin {
     private ClanConfigManager configManager;
     private AchievementManager achievementManager;
     private QuestManager questManager;
+    private InviteManager inviteManager;
 
     @Override
     public void onEnable() {
@@ -81,6 +83,20 @@ public class IraqueClan extends JavaPlugin {
             report.finishStep(step, count + " conquista(s) definida(s)");
         } catch (Exception e) {
             report.finishStepWarning(step, "Erro ao carregar conquistas: " + e.getMessage());
+        }
+
+        // 4.1 Invites
+        step = report.startStep("Carregando sistema de convites");
+        try {
+            this.inviteManager = new InviteManager(this);
+            Bukkit.getScheduler().runTaskTimer(this, () -> {
+                if (this.inviteManager != null) {
+                    this.inviteManager.removeExpired();
+                }
+            }, 200L, 600L);
+            report.finishStep(step, "Convites prontos");
+        } catch (Exception e) {
+            report.finishStepWarning(step, "Erro ao carregar convites: " + e.getMessage());
         }
 
         // 5. Quests
@@ -232,6 +248,10 @@ public class IraqueClan extends JavaPlugin {
 
     public QuestManager getQuestManager() {
         return this.questManager;
+    }
+
+    public InviteManager getInviteManager() {
+        return this.inviteManager;
     }
 
     public void sendDiscordMessage(String message) {

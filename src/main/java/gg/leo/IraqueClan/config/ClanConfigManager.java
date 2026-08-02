@@ -29,6 +29,10 @@ public class ClanConfigManager {
     // War settings
     private int warMaxDuration; // minutes
     private int warAcceptTimeout; // seconds
+
+    // Invite settings
+    private long inviteTimeoutMillis; // millis
+    private int maxPendingInvites;
     
     // Clan permissions by role
     private List<String> leaderPermissions;
@@ -46,6 +50,7 @@ public class ClanConfigManager {
         this.config = this.plugin.getConfig();
         this.loadGeneral();
         this.loadWar();
+        this.loadInvites();
         this.loadPermissions();
     }
 
@@ -56,6 +61,7 @@ public class ClanConfigManager {
         reloaded.add("config.yml");
         this.loadGeneral();
         this.loadWar();
+        this.loadInvites();
         this.loadPermissions();
         reloaded.add("config settings");
         this.loadMessages();
@@ -100,6 +106,13 @@ public class ClanConfigManager {
         if (section == null) return;
         this.warMaxDuration = section.getInt("duracao-maxima-minutos", 1440);
         this.warAcceptTimeout = section.getInt("tempo-aceitar-segundos", 60);
+    }
+
+    private void loadInvites() {
+        ConfigurationSection section = this.config.getConfigurationSection("convites");
+        this.inviteTimeoutMillis = section != null
+                ? section.getLong("tempo-expiracao-segundos", 120) * 1000L : 120_000L;
+        this.maxPendingInvites = section != null ? section.getInt("max-pendentes", 5) : 5;
     }
 
     private void loadPermissions() {
@@ -205,6 +218,8 @@ public class ClanConfigManager {
     public double getCreateCost() { return this.createCost; }
     public int getWarMaxDurationMinutes() { return this.warMaxDuration; }
     public int getWarAcceptTimeoutSeconds() { return this.warAcceptTimeout; }
+    public long getInviteTimeoutMillis() { return this.inviteTimeoutMillis; }
+    public int getMaxPendingInvites() { return this.maxPendingInvites; }
     public List<String> getLeaderPermissions() { return this.leaderPermissions; }
     public List<String> getSubLeaderPermissions() { return this.subLeaderPermissions; }
     public List<String> getMemberPermissions() { return this.memberPermissions; }

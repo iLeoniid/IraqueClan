@@ -8,8 +8,7 @@ import gg.leo.IraqueClan.utils.ClanUtils;
 import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.utils.menu.BaseMenu;
 import gg.leo.IraqueClan.utils.menu.MenuButton;
-import gg.leo.IraqueClan.utils.menu.MenuType;
-import java.text.SimpleDateFormat;
+import gg.leo.IraqueClan.utils.menu.MenuType;import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +35,30 @@ public class ClanMenu extends BaseMenu {
         } else {
             buildClanMenu(clan);
         }
+
+        this.registerButton(45, new MenuButton(
+                Material.COMPASS,
+                "&#ffd166&lMenu Geral",
+                List.of(
+                        "",
+                        " &#AAAAAAPainel principal de navega\u00e7\u00e3o",
+                        " &#AAAAAATodos os m\u00f3dulos em um s\u00f3 lugar",
+                        ""
+                ),
+                p -> new GeneralMenu(this.plugin, p).openMenu()
+        ));
+
+        this.registerButton(46, new MenuButton(
+                Material.GRASS_BLOCK,
+                "&#55ff55&lLista de Cl\u00e3s",
+                List.of(
+                        "",
+                        " &#AAAAAANavegue por todos os cl\u00e3s",
+                        " &#AAAAAAe veja os membros de cada um",
+                        ""
+                ),
+                p -> new ClanListMenu(this.plugin, p).openMenu()
+        ));
 
         this.registerButton(52, new MenuButton(
                 Material.COMMAND_BLOCK,

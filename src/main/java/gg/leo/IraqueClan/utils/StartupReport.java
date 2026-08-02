@@ -6,8 +6,11 @@ import java.util.logging.Logger;
 
 public class StartupReport {
 
-    private static final String PREFIX = "\u00a77[\u00a7bIraqueClan\u00a77] \u00a7r";
-    private static final String LINE = "\u00a77==============================";
+    private static final String PREFIX =
+            ConsoleColors.DARK_GRAY + "[" + ConsoleColors.CYAN + "IraqueClan"
+                    + ConsoleColors.DARK_GRAY + "] " + ConsoleColors.RESET;
+    private static final String LINE =
+            ConsoleColors.DARK_GRAY + "==============================" + ConsoleColors.RESET;
 
     private final Logger logger;
     private final long startTime;
@@ -24,8 +27,8 @@ public class StartupReport {
     public void printBanner(String version) {
         this.logger.info("");
         this.logger.info(LINE);
-        this.logger.info("\u00a7b\u00a7l  IraqueClan v" + version);
-        this.logger.info("\u00a7b\u00a7l  Sistema de Cl\u00e3s");
+        this.logger.info(ConsoleColors.CYAN + ConsoleColors.BOLD + "  IraqueClan v" + version + ConsoleColors.RESET);
+        this.logger.info(ConsoleColors.CYAN + ConsoleColors.BOLD + "  Sistema de Cl\u00e3s" + ConsoleColors.RESET);
         this.logger.info(LINE);
         this.logger.info("");
     }
@@ -42,10 +45,12 @@ public class StartupReport {
         if (step.status == Status.SKIP) this.skipped++;
 
         String icon = getColoredIcon(step.status);
-        String timeStr = step.elapsed > 0 ? " \u00a78(" + step.elapsed + "ms)" : "";
-        String detail = step.detail != null ? " \u00a77- " + getDetailColor(step.status) + step.detail : "";
+        String timeStr = step.elapsed > 0
+                ? " " + ConsoleColors.DARK_GRAY + "(" + step.elapsed + "ms)" + ConsoleColors.RESET : "";
+        String detail = step.detail != null
+                ? " " + ConsoleColors.DARK_GRAY + "- " + getDetailColor(step.status) + step.detail + ConsoleColors.RESET : "";
 
-        this.logger.info(PREFIX + icon + " \u00a7e" + step.name + timeStr + detail);
+        this.logger.info(PREFIX + icon + " " + ConsoleColors.YELLOW + step.name + ConsoleColors.RESET + timeStr + detail);
     }
 
     public void finishStep(Step step, String detail) {
@@ -80,37 +85,41 @@ public class StartupReport {
 
         this.logger.info("");
         this.logger.info(LINE);
-        this.logger.info("\u00a7e\u00a7l  Relatório de Inicialização");
+        this.logger.info(ConsoleColors.YELLOW + ConsoleColors.BOLD + "  Relat\u00f3rio de Inicializa\u00e7\u00e3o" + ConsoleColors.RESET);
         this.logger.info(LINE);
         this.logger.info("");
 
         for (Step step : this.steps) {
             String icon = getColoredIcon(step.status);
-            String nameColor = step.status == Status.ERROR ? "\u00a7c" :
-                    step.status == Status.WARN ? "\u00a7e" :
-                            step.status == Status.SKIP ? "\u00a78" : "\u00a7a";
-            this.logger.info(PREFIX + "  " + icon + " " + nameColor + step.name);
+            String nameColor = step.status == Status.ERROR ? ConsoleColors.RED :
+                    step.status == Status.WARN ? ConsoleColors.YELLOW :
+                            step.status == Status.SKIP ? ConsoleColors.GRAY : ConsoleColors.GREEN;
+            this.logger.info(PREFIX + "  " + icon + " " + nameColor + step.name + ConsoleColors.RESET);
         }
 
         this.logger.info("");
-        this.logger.info(PREFIX + "\u00a7e\u00a7l Resumo:");
-        this.logger.info(PREFIX + "  \u00a77Steps: \u00a7a" + loaded + "\u00a77/\u00a7f" + this.steps.size() + " \u00a7acarregados");
+        this.logger.info(PREFIX + ConsoleColors.YELLOW + ConsoleColors.BOLD + " Resumo:" + ConsoleColors.RESET);
+        this.logger.info(PREFIX + "  " + ConsoleColors.GRAY + "Steps: " + ConsoleColors.GREEN + loaded
+                + ConsoleColors.GRAY + "/" + ConsoleColors.WHITE + this.steps.size()
+                + ConsoleColors.GRAY + " carregados" + ConsoleColors.RESET);
         if (this.errors > 0) {
-            this.logger.info(PREFIX + "  \u00a77Erros: \u00a7c" + this.errors);
+            this.logger.info(PREFIX + "  " + ConsoleColors.GRAY + "Erros: " + ConsoleColors.RED + this.errors + ConsoleColors.RESET);
         }
         if (this.warnings > 0) {
-            this.logger.info(PREFIX + "  \u00a77Avisos: \u00a7e" + this.warnings);
+            this.logger.info(PREFIX + "  " + ConsoleColors.GRAY + "Avisos: " + ConsoleColors.YELLOW + this.warnings + ConsoleColors.RESET);
         }
         if (this.skipped > 0) {
-            this.logger.info(PREFIX + "  \u00a77Pulados: \u00a78" + this.skipped);
+            this.logger.info(PREFIX + "  " + ConsoleColors.GRAY + "Pulados: " + ConsoleColors.GRAY + this.skipped + ConsoleColors.RESET);
         }
-        this.logger.info(PREFIX + "  \u00a77Tempo: \u00a7f" + totalMs + "ms");
+        this.logger.info(PREFIX + "  " + ConsoleColors.GRAY + "Tempo: " + ConsoleColors.WHITE + totalMs + "ms" + ConsoleColors.RESET);
 
         this.logger.info("");
         if (this.errors == 0) {
-            this.logger.info(PREFIX + "\u00a7a\u00a7l  ✓ Plugin habilitado com sucesso! \u00a7aNenhum erro detectado.");
+            this.logger.info(PREFIX + ConsoleColors.GREEN + ConsoleColors.BOLD + "  \u2713 Plugin habilitado com sucesso! "
+                    + ConsoleColors.GREEN + "Nenhum erro detectado." + ConsoleColors.RESET);
         } else {
-            this.logger.info(PREFIX + "\u00a7c\u00a7l  ✗ Plugin habilitado com \u00a7c" + this.errors + " erro(s). \u00a7cVerifique os logs acima.");
+            this.logger.info(PREFIX + ConsoleColors.RED + ConsoleColors.BOLD + "  \u2717 Plugin habilitado com "
+                    + ConsoleColors.RED + this.errors + " erro(s). " + ConsoleColors.RED + "Verifique os logs acima." + ConsoleColors.RESET);
         }
         this.logger.info(LINE);
         this.logger.info("");
@@ -130,19 +139,19 @@ public class StartupReport {
 
     private String getColoredIcon(Status status) {
         return switch (status) {
-            case OK -> "\u00a7a\u00a7l[✓]\u00a7r";
-            case WARN -> "\u00a7e\u00a7l[!]\u00a7r";
-            case ERROR -> "\u00a7c\u00a7l[✗]\u00a7r";
-            case SKIP -> "\u00a78\u00a7l[-]\u00a7r";
+            case OK -> ConsoleColors.GREEN + ConsoleColors.BOLD + "[\u2713]" + ConsoleColors.RESET;
+            case WARN -> ConsoleColors.YELLOW + ConsoleColors.BOLD + "[!]" + ConsoleColors.RESET;
+            case ERROR -> ConsoleColors.RED + ConsoleColors.BOLD + "[\u2717]" + ConsoleColors.RESET;
+            case SKIP -> ConsoleColors.GRAY + ConsoleColors.BOLD + "[-]" + ConsoleColors.RESET;
         };
     }
 
     private String getDetailColor(Status status) {
         return switch (status) {
-            case OK -> "\u00a7a";
-            case WARN -> "\u00a7e";
-            case ERROR -> "\u00a7c";
-            case SKIP -> "\u00a78";
+            case OK -> ConsoleColors.GREEN;
+            case WARN -> ConsoleColors.YELLOW;
+            case ERROR -> ConsoleColors.RED;
+            case SKIP -> ConsoleColors.GRAY;
         };
     }
 

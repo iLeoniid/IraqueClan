@@ -1,6 +1,7 @@
 package gg.leo.IraqueClan.clan;
 
 import gg.leo.IraqueClan.IraqueClan;
+import java.util.List;
 import org.bukkit.entity.Player;
 
 public class ClanAcceptCommand implements gg.leo.IraqueClan.clan.ClanSubCommand {
@@ -20,29 +21,49 @@ public class ClanAcceptCommand implements gg.leo.IraqueClan.clan.ClanSubCommand 
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.already-in-clan"));
             return;
         }
-        java.util.UUID leaderUuid = this.plugin.getClanManager().getPendingInvite(player.getUniqueId());
-        if (leaderUuid == null) {
-            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.not-invited"));
+        List<ClanInvite> invites = this.plugin.getInviteManager().getInvites(player.getUniqueId());
+        if (invites.isEmpty()) {
+            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.no-pending"));
             return;
         }
-        Clan leaderClan = this.plugin.getClanManager().getClanByPlayerDirect(leaderUuid);
+
+        ClanInvite target;
+        if (args.length >= 2) {
+            target = this.plugin.getInviteManager().getInvite(player.getUniqueId(), args[1]);
+            if (target == null) {
+                player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.not-invited"));
+                return;
+            }
+        } else if (invites.size() == 1) {
+            target = invites.get(0);
+        } else {
+            InviteMessenger.sendInviteList(player, this.plugin, invites);
+            return;
+        }
+
+        Clan leaderClan = this.plugin.getClanManager().getClan(target.clanName()).orElse(null);
         if (leaderClan == null) {
-            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.not-found"));
-            this.plugin.getClanManager().removePendingInvite(player.getUniqueId());
+            player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.not-found")
+                    .replace("{clan}", target.clanName()));
+            this.plugin.getInviteManager().removeInvite(player.getUniqueId(), target.clanName());
             return;
         }
-        if (leaderClan.getMemberCount() >= this.plugin.getConfigManager().getMaxMembers()) {
+        if (leaderClan.getMemberCount() >= leaderClan.getMaxMembers()) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("clan.clan-full")
-                    .replace("{max}", String.valueOf(this.plugin.getConfigManager().getMaxMembers())));
-            this.plugin.getClanManager().removePendingInvite(player.getUniqueId());
+                    .replace("{max}", String.valueOf(leaderClan.getMaxMembers())));
+            this.plugin.getInviteManager().removeInvite(player.getUniqueId(), target.clanName());
             return;
         }
+
         boolean joined = this.plugin.getClanManager().joinClan(player.getUniqueId(), leaderClan.getName());
-        this.plugin.getClanManager().removePendingInvite(player.getUniqueId());
+        this.plugin.getInviteManager().removeInvite(player.getUniqueId(), target.clanName());
         if (joined) {
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.accepted")
                     .replace("{clan}", leaderClan.getName()));
-            Player leader = this.plugin.getServer().getPlayer(leaderUuid);
+            InviteMessenger.sendWelcome(player, leaderClan);
+            this.plugin.getClanManager().addLogToClan(leaderClan.getName(), "JOIN",
+                    player.getUniqueId(), player.getName() + " entrou no clã");
+            Player leader = this.plugin.getServer().getPlayer(target.inviterUuid());
             if (leader != null && leader.isOnline()) {
                 leader.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.player-joined")
                         .replace("{player}", player.getName()));

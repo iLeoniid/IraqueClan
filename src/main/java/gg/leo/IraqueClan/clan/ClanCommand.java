@@ -1,7 +1,9 @@
 package gg.leo.IraqueClan.clan;
 
 import gg.leo.IraqueClan.IraqueClan;
+import gg.leo.IraqueClan.menu.ClanListMenu;
 import gg.leo.IraqueClan.menu.ClanMenu;
+import gg.leo.IraqueClan.menu.GeneralMenu;
 import gg.leo.IraqueClan.utils.ItemBuilder;
 import gg.leo.IraqueClan.war.WarAcceptCommand;
 import gg.leo.IraqueClan.war.WarCommand;
@@ -25,6 +27,9 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
         this.subCommands.put("criar", new ClanCreateSubCommand(plugin));
         this.subCommands.put("convidar", new ClanInviteSubCommand(plugin));
         this.subCommands.put("aceitar", new ClanAcceptCommand(plugin));
+        this.subCommands.put("recusar", new ClanDeclineCommand(plugin));
+        this.subCommands.put("convites", new ClanInvitesCommand(plugin));
+        this.subCommands.put("menu", new ClanGeneralMenuSubCommand(plugin));
         this.subCommands.put("sair", new ClanLeaveCommand(plugin));
         this.subCommands.put("expulsar", new ClanKickCommand(plugin));
         this.subCommands.put("dissolver", new ClanDisbandCommand(plugin));
@@ -92,7 +97,7 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        if (!(sender instanceof Player)) return List.of();
+        if (!(sender instanceof Player player)) return List.of();
         List<String> completions = new ArrayList<>();
 
         if (args.length == 1) {
@@ -121,6 +126,14 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
                 for (Player online : org.bukkit.Bukkit.getOnlinePlayers()) {
                     if (online.getName().toLowerCase().startsWith(partial)) {
                         completions.add(online.getName());
+                    }
+                }
+            } else if (sub.equals("aceitar") || sub.equals("recusar")) {
+                String partial = args[1].toLowerCase();
+                for (ClanInvite pending : this.plugin.getInviteManager()
+                        .getInvites(player.getUniqueId())) {
+                    if (pending.clanName().toLowerCase().startsWith(partial)) {
+                        completions.add(pending.clanName());
                     }
                 }
             } else if (sub.equals("perfil")) {
@@ -185,6 +198,19 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
         @Override
         public void execute(Player player, String[] args) {
             new ClanMenu(this.plugin, player).openMenu();
+        }
+    }
+
+    private static class ClanGeneralMenuSubCommand implements ClanSubCommand {
+        private final IraqueClan plugin;
+
+        ClanGeneralMenuSubCommand(IraqueClan plugin) {
+            this.plugin = plugin;
+        }
+
+        @Override
+        public void execute(Player player, String[] args) {
+            new GeneralMenu(this.plugin, player).openMenu();
         }
     }
 
@@ -298,9 +324,14 @@ public class ClanCommand implements CommandExecutor, TabCompleter {
                         .replace("{max}", String.valueOf(clan.getMaxMembers())));
                 return;
             }
-            this.plugin.getClanManager().setPendingInvite(target.getUniqueId(), player.getUniqueId());
+            ClanInvite invite = new ClanInvite(clan.getName(), player.getName(),
+                    player.getUniqueId(), System.currentTimeMillis());
+            this.plugin.getInviteManager().addInvite(target.getUniqueId(), invite);
             player.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.sent")
-                    .replace("{player}", target.getName()));
+                    .replace("{player}", target.getName())
+                    .replace("{clan}", clan.getName()));
+            InviteMessenger.sendInviteMessage(target, clan, invite,
+                    this.plugin.getConfigManager().getInviteTimeoutMillis());
             target.sendMessage(this.plugin.getConfigManager().getPrefixedMessage("invite.received")
                     .replace("{player}", player.getName())
                     .replace("{clan}", clan.getName()));

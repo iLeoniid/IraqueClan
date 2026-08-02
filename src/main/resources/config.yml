@@ -42,6 +42,16 @@ criacao:
     - operator
 
 # --------------------------------------------------
+#  CONVITES
+#  Sistema de convites para clãs
+# --------------------------------------------------
+convites:
+  # Tempo de expiração de um convite em segundos
+  tempo-expiracao-segundos: 120
+  # Quantidade máxima de convites pendentes por jogador
+  max-pendentes: 5
+
+# --------------------------------------------------
 #  ECONOMIA
 #  Integração com Vault para sistema econômico
 # --------------------------------------------------
